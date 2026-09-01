@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<!-- ==================================================================
+     Mediaflow — FAQ (Nederlands)
+     ------------------------------------------------------------------
+     Veelgestelde vragen in accordion-vorm: je ziet eerst alleen de
+     vraag, klik je erop dan vouwt het antwoord open. JavaScript zet
+     de class ".open" en CSS regelt de rest.
+     ================================================================== -->
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
@@ -9,8 +16,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Lege header — wordt gevuld door script.js -->
     <header class="site-header"></header>
 
+    <!-- HERO -->
     <section class="hero small">
         <div class="hero-inner">
             <h1>Veelgestelde vragen</h1>
@@ -18,51 +27,79 @@
         </div>
     </section>
 
+    <!-- FAQ-VRAGEN: elk .faq-item bestaat uit een button (vraag) en
+         een div (antwoord). Script.js koppelt de klik-handler. -->
     <section class="section">
         <div class="faq-item">
-            <h3>Wat kost een video?</h3>
-            <p>De prijs is afhankelijk van het type video, de locatie en de levertijd. Vraag een vrijblijvende offerte aan — dan ontvang je binnen enkele dagen een prijs op maat.</p>
+            <button class="faq-question" type="button" aria-expanded="false">Wat kost een video?<span class="faq-icon"></span></button>
+            <div class="faq-answer"><p>De prijs is afhankelijk van het type video, de locatie en de levertijd. Vraag een vrijblijvende <a href="contact.html">offerte via e-mail</a> aan — dan ontvang je binnen enkele dagen een prijs op maat.</p></div>
         </div>
         <div class="faq-item">
-            <h3>Hoe lang duurt het voordat mijn video klaar is?</h3>
-            <p>Standaard levertijd is ongeveer 2 weken. Spoedlevering is mogelijk — wel tegen een toeslag, omdat het betekent dat ik andere werkzaamheden moet verplaatsen.</p>
+            <button class="faq-question" type="button" aria-expanded="false">Hoe lang duurt het voordat mijn video klaar is?<span class="faq-icon"></span></button>
+            <div class="faq-answer"><p>Standaard levertijd is ongeveer 2 weken. Spoedlevering is mogelijk — wel tegen een toeslag, omdat het betekent dat ik andere werkzaamheden moet verplaatsen. Bij hele grote projecten kan de levertijd iets uitlopen.</p></div>
         </div>
         <div class="faq-item">
-            <h3>Reis je ook naar locaties verder weg?</h3>
-            <p>Jazeker. Ik woon in Holten (Overijssel) en werk graag in de omgeving, maar ook verder weg is mogelijk. Bij grotere afstanden reken ik reiskosten — dit bespreek ik altijd vooraf.</p>
+            <button class="faq-question" type="button" aria-expanded="false">Reis je ook naar locaties verder weg?<span class="faq-icon"></span></button>
+            <div class="faq-answer"><p>Jazeker. Ik woon in Holten (Overijssel) en werk graag in de omgeving, maar ook verder weg is mogelijk. Bij grotere afstanden reken ik reiskosten — dit bespreek ik altijd vooraf.</p></div>
         </div>
         <div class="faq-item">
-            <h3>Wat gebeurt er als het weer slecht is?</h3>
-            <p>Dronewerken is weersafhankelijk. Bij regen of harde wind plannen we de opnamedag kosteloos opnieuw in. Ik houd het weer zelf in de gaten en neem proactief contact op.</p>
+            <button class="faq-question" type="button" aria-expanded="false">Wat gebeurt er als het weer slecht is?<span class="faq-icon"></span></button>
+            <div class="faq-answer"><p>Dronewerken is weersafhankelijk. Bij regen of harde wind plannen we de opnamedag kosteloos opnieuw in. Ik houd het weer zelf in de gaten en neem proactief contact op — maar je mag het ook altijd zelf aangeven als je vindt dat het weer niet mooi genoeg is voor jouw beelden.</p></div>
         </div>
         <div class="faq-item">
-            <h3>Mag ik de video ook op social media gebruiken?</h3>
-            <p>Ja! De video's zijn bedoeld om te delen. Je krijgt de bestanden in een formaat dat geschikt is voor website, Instagram, TikTok en Facebook.</p>
+            <button class="faq-question" type="button" aria-expanded="false">Mag ik de video ook op social media gebruiken?<span class="faq-icon"></span></button>
+            <div class="faq-answer"><p>Ja! De video's zijn bedoeld om te delen. Je krijgt de bestanden in een formaat dat geschikt is voor website, Instagram, TikTok en Facebook.</p></div>
         </div>
         <div class="faq-item">
-            <h3>Heb je vergunningen voor dronevluchten?</h3>
-            <p>Ik houd me altijd aan de Europese drone-regels (EASA) en de lokale wetgeving. Voor de meeste opdrachten in de open lucht is geen speciale vergunning nodig — ik check dit vooraf per locatie.</p>
+            <button class="faq-question" type="button" aria-expanded="false">Heb je vergunningen voor dronevluchten?<span class="faq-icon"></span></button>
+            <div class="faq-answer"><p>Ik houd me altijd aan de Europese drone-regels (EASA) en de lokale wetgeving. Voor de meeste opdrachten in de open lucht is geen speciale vergunning nodig — ik check dit vooraf per locatie.</p></div>
         </div>
         <div class="faq-item">
-            <h3>Kan ik ook alleen foto's laten maken, zonder video?</h3>
-            <p>Zeker. Luchtfotografie is los af te nemen — ideaal voor vastgoed, vastgoedmakelaars of als je simpelweg mooie beelden van je terrein wilt.</p>
+            <button class="faq-question" type="button" aria-expanded="false">Kan ik ook alleen foto's laten maken, zonder video?<span class="faq-icon"></span></button>
+            <div class="faq-answer"><p>Zeker. Luchtfotografie is los af te nemen — ideaal voor vastgoed, vastgoedmakelaars of als je simpelweg mooie beelden van je terrein wilt.</p></div>
         </div>
         <div class="faq-item">
-            <h3>Wat als ik iets niet helemaal goed vind in de video?</h3>
-            <p>Dat bespreken we gewoon. Kleine aanpassingen in de montage zijn inbegrepen — ik lever pas als het resultaat echt klopt.</p>
+            <button class="faq-question" type="button" aria-expanded="false">Wat als ik iets niet helemaal goed vind in de video?<span class="faq-icon"></span></button>
+            <div class="faq-answer"><p>Dat bespreken we gewoon. Kleine aanpassingen in de montage zijn inbegrepen — ik lever pas als het resultaat echt klopt.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">Film je ook binnen, bijvoorbeeld in een restaurant of woning?<span class="faq-icon"></span></button>
+            <div class="faq-answer"><p>Ja, dat kan met de FPV-drone. Binnen vliegen vraagt iets meer voorbereiding, maar het geeft een gaaf effect — denk aan een fly-through door een woning, restaurant of bedrijfsruimte. We bespreken vooraf wat er nodig is en of de ruimte er geschikt voor is.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">Hoe zit het met muziek en auteursrechten?<span class="faq-icon"></span></button>
+            <div class="faq-answer"><p>Ik gebruik altijd muziek met de juiste licentie, zodat je de video veilig kunt delen op je website en social media. Wil je een specifiek nummer? Dan kijken we samen of dat juridisch en praktisch mogelijk is.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">Krijg ik ook het ruwe materiaal meegeleverd?<span class="faq-icon"></span></button>
+            <div class="faq-answer"><p>Standaard lever ik de eindvideo op — dat is waarom je kiest. Wil je ook het ruwe beeldmateriaal apart ontvangen, dan kan dat achteraf altijd. Zijn het heel grote bestanden? Dan kijken we samen naar een praktische oplossing.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">Kun je mijn eigen beelden combineren met jouw dronebeelden?<span class="faq-icon"></span></button>
+            <div class="faq-answer"><p>Ja, zeker. Heb je al foto's of video's van je bedrijf of locatie? Dan kan ik die combineren met mijn dronebeelden tot één compleet verhaal. Handig als je bestaande beelden wilt behouden maar extra sfeer en actie wilt toevoegen.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">Kan je ook een evenement filmen, zoals een opening of festival?<span class="faq-icon"></span></button>
+            <div class="faq-answer"><p>Jazeker! Evenementen zijn juist erg geschikt voor dronebeelden — veel sfeer, beweging en publiek. Neem vooraf contact op, dan bespreken we het programma, de locatie en wat er mogelijk is met de drone.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">Wat moet ik vooraf regelen voor een opname?<span class="faq-icon"></span></button>
+            <div class="faq-answer"><p>Zelf hoef je weinig te regelen. Een duidelijk adres en toestemming om te filmen (bij vastgoed: akkoord van de eigenaar) is vaak al genoeg. Ik regel de rest — van planning tot materiaal — en neem tijdig contact op over de details. Maar je mag uiteraard altijd meedenken of een bijdrage leveren: denk aan ideeën voor shots, spulletjes die je extra in beeld wilt hebben, of zelfs zelf een rol in een fly-through. Alles mag — samen maken we er het mooiste filmpje van.</p></div>
         </div>
     </section>
 
+    <!-- CTA-BLOK -->
     <section class="section soft">
         <div class="section">
             <div class="cta-block">
                 <h2>Nog een vraag?</h2>
-                <p>Stel hem gerust — ik help je graag verder.</p>
+                <p>Stel hem gerust — ik help je graag verder. Je hoeft niet te aarzelen en het hoeft niet meteen over een opdracht te gaan: of het nou een grote vraag is of gewoon wat even checken, je mag me altijd mailen of een bericht sturen.</p>
                 <a href="contact.html" class="btn btn-primary">Neem contact op</a>
             </div>
         </div>
     </section>
 
+    <!-- Lege footer — wordt gevuld door script.js -->
     <footer class="site-footer"></footer>
     <script src="script.js"></script>
 </body>

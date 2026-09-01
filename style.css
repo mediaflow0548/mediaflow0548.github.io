@@ -1,22 +1,77 @@
-/* Mediaflow — Modern Light met diep groen */
+/* ==================================================================
+   Mediaflow — Modern Light met diep groen
+   ------------------------------------------------------------------
+   Dit is HET centrale stylesheet voor de hele website (alle talen).
+   Elke pagina in /, /en/, /de/ en /fr/ gebruikt dit ene bestand.
+
+   Opbouw (boven naar beneden):
+   1. CSS-variabelen (kleuren/afmetingen)
+   2. Basisopmaak
+   3. Header en navigatie
+   4. Hero
+   5. Knoppen
+   6. Secties
+   7. Kaarten
+   8. Portfolio-folders
+   9. Video- en fotoblokken
+   10. Proces-stappen
+   11. FAQ-accordion
+   12. Contactpagina
+   13. Call-to-action blokken
+   14. Footer
+   15. Responsiviteit
+   16. Motion/animaties (onderaan, gemarkeerd om terug te draaien)
+   ================================================================== */
+
+/* ------------------------------------------------------------------
+   1. CSS-VARIABELEN
+   Alle kleuren en afmetingen die op meerdere plekken worden gebruikt.
+   Wijzig je hier iets, dan verandert het op de hele website mee.
+   ------------------------------------------------------------------ */
 
 :root {
+    /* Donker groen — koppen (h2/h3) en donkere achtergronden */
     --green-900: #123d26;
+
+    /* Middel groen — hoofdkleur voor knoppen, actieve links, iconen */
     --green-700: #1a5c3a;
+
+    /* Licht groen — subtiele hover-achtergrond */
     --green-100: #e6f2ea;
+
+    /* Wit — standaard achtergrond */
     --bg: #ffffff;
+
+    /* Licht grijsgroen — zachte achtergrond voor afwisselende secties */
     --bg-soft: #f5f8f6;
+
+    /* Donkergrijs — standaard tekstkleur */
     --text: #1f2937;
+
+    /* Grijsgroen — tekst die iets op de achtergrond mag staan */
     --text-muted: #5b6b63;
+
+    /* Lichtgrijs — dunne scheidingslijnen en randen */
     --border: #e3eae5;
+
+    /* Afgeronde hoeken bij kaarten, knoppen en blokken */
     --radius: 14px;
+
+    /* Maximale breedte van de inhoud (voorkomt te brede tekst) */
     --max-width: 1100px;
 }
 
+/* ------------------------------------------------------------------
+   2. BASISOPMAAK
+   Globale instellingen die op de hele pagina gelden.
+   ------------------------------------------------------------------ */
+
+/* Reset: alle browsers maken elementen op dezelfde manier op */
 * {
     box-sizing: border-box;
 }
 
+/* Standaard lettertype, achtergrond en tekstkleur voor de hele pagina */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--bg);
@@ -25,15 +80,24 @@ body {
     line-height: 1.7;
 }
 
+/* Afbeeldingen nooit breder dan hun container */
 img {
     max-width: 100%;
     display: block;
 }
 
+/* Standaard kleur voor alle links */
 a {
     color: var(--green-700);
 }
 
+/* ------------------------------------------------------------------
+   3. HEADER EN NAVIGATIE
+   Balk bovenaan met logo, menu en taalknoppen.
+   ------------------------------------------------------------------ */
+
+/* ===== Header en navigatie ===== */
+/* De header blijft bovenaan plakken bij het scrollen (sticky) */
 .site-header {
     position: sticky;
     top: 0;
@@ -43,6 +107,7 @@ a {
     border-bottom: 1px solid var(--border);
 }
 
+/* Binnenkant header: logo links, menu rechts */
 .header-inner {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -53,6 +118,7 @@ a {
     gap: 20px;
 }
 
+/* Logo + tekst "Mediaflow" linksboven */
 .brand {
     display: flex;
     align-items: center;
@@ -63,22 +129,26 @@ a {
     font-size: 1.2rem;
 }
 
+/* Het woord "flow" krijgt een groene kleur (logo-accent) */
 .brand .brand-flow {
     color: var(--green-700);
 }
 
+/* Rond logo-afbeelding */
 .brand img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
 }
 
+/* Desktopmenu: horizontale rij met links */
 .nav-desktop {
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
+/* Elke individuele menu-link */
 .nav-desktop a {
     text-decoration: none;
     color: var(--text);
@@ -88,16 +158,19 @@ a {
     transition: background 0.2s ease, color 0.2s ease;
 }
 
+/* Hover-effect: zachte groene achtergrond */
 .nav-desktop a:hover {
     background: var(--green-100);
     color: var(--green-900);
 }
 
+/* De pagina waar je nu bent krijgt een gemarkeerde kleur */
 .nav-desktop a.active {
     color: var(--green-700);
     font-weight: 600;
 }
 
+/* "Contact"-knop valt extra op (groene achtergrond) */
 .nav-desktop a.nav-cta {
     background: var(--green-700);
     color: #ffffff;
@@ -109,12 +182,14 @@ a {
     color: #ffffff;
 }
 
+/* Taalknoppen: NL, EN, DE, FR */
 .lang-switch {
     display: flex;
     gap: 4px;
     margin-left: 12px;
 }
 
+/* Elke taalknop (actieve taal is button, andere zijn links) */
 .lang-switch button {
     border: 1px solid var(--border);
     background: #ffffff;
@@ -125,6 +200,7 @@ a {
     cursor: pointer;
 }
 
+/* De knop van de taal waarin je je nu bevindt (gemarkeerd) */
 .lang-switch button.active {
     background: var(--green-700);
     border-color: var(--green-700);
@@ -137,6 +213,24 @@ a {
     cursor: not-allowed;
 }
 
+.lang-switch a {
+    border: 1px solid var(--border);
+    background: #ffffff;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.lang-switch a:hover {
+    background: var(--green-100);
+    border-color: var(--green-700);
+    color: var(--green-900);
+}
+
+/* Hamburger-menu voor mobiel: standaard verborgen */
 .hamburger {
     display: none;
     background: none;
@@ -145,6 +239,7 @@ a {
     padding: 8px;
 }
 
+/* De drie streepjes van het hamburger-icoon */
 .hamburger span {
     display: block;
     width: 24px;
@@ -154,6 +249,7 @@ a {
     transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
+/* Als het menu open is: streepjes worden een kruisje */
 .hamburger.open span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
@@ -166,6 +262,7 @@ a {
     transform: translateY(-7px) rotate(-45deg);
 }
 
+/* Uitgeklapt mobiel menu (verschijnt na klik op hamburger) */
 .nav-mobile {
     display: none;
     flex-direction: column;
@@ -173,10 +270,12 @@ a {
     border-top: 1px solid var(--border);
 }
 
+/* Verberg standaard, toon alleen als ".open" is gezet door JS */
 .nav-mobile.open {
     display: flex;
 }
 
+/* Elke link in het mobiele menu */
 .nav-mobile a {
     text-decoration: none;
     color: var(--text);
@@ -185,15 +284,24 @@ a {
     font-size: 1rem;
 }
 
+/* Laatste link hoeft geen onderstreping */
 .nav-mobile a:last-child {
     border-bottom: none;
 }
 
+/* "Contact"-link in mobiele menu valt extra op */
 .nav-mobile a.nav-cta {
     color: var(--green-700);
     font-weight: 600;
 }
 
+/* ------------------------------------------------------------------
+   4. HERO
+   Grote openingssectie bovenaan elke pagina.
+   Homepage heeft een donkergroene gradient-achtergrond.
+   ------------------------------------------------------------------ */
+
+/* ===== Hero (grote openingssectie bovenaan elke pagina) ===== */
 .hero {
     position: relative;
     background:
@@ -204,11 +312,13 @@ a {
     padding: 120px 24px 100px;
 }
 
+/* Binnenkant van de hero, gecentreerd met maximale breedte */
 .hero-inner {
     max-width: var(--max-width);
     margin: 0 auto;
 }
 
+/* Grote titel — schaalt automatisch mee met het scherm */
 .hero h1 {
     font-size: clamp(2.2rem, 5vw, 3.4rem);
     line-height: 1.15;
@@ -216,6 +326,7 @@ a {
     max-width: 720px;
 }
 
+/* Uitlegtekst onder de titel */
 .hero p {
     font-size: 1.15rem;
     max-width: 560px;
@@ -223,12 +334,14 @@ a {
     color: #d9e7de;
 }
 
+/* Rij met knoppen in de hero */
 .hero .btn-row {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
 }
 
+/* Kleinere variant — gebruikt op subpagina's */
 .hero.small {
     padding: 80px 24px 70px;
 }
@@ -237,6 +350,14 @@ a {
     font-size: clamp(1.9rem, 4vw, 2.6rem);
 }
 
+/* ------------------------------------------------------------------
+   5. KNOPPEN
+   Drie varianten: wit (btn-primary), omlijnd (btn-outline) en
+   groen (btn-green). Alle drie hebben een lichte lift bij hover.
+   ------------------------------------------------------------------ */
+
+/* ===== Knoppen ===== */
+/* Basisstijl voor ALLE knoppen */
 .btn {
     display: inline-block;
     padding: 14px 28px;
@@ -247,6 +368,7 @@ a {
     transition: background 0.2s ease, transform 0.2s ease;
 }
 
+/* Witte knop op donkere achtergrond */
 .btn-primary {
     background: #ffffff;
     color: var(--green-900);
@@ -257,6 +379,7 @@ a {
     transform: translateY(-2px);
 }
 
+/* Omlijnde knop met doorzichtige achtergrond */
 .btn-outline {
     border: 2px solid rgba(255, 255, 255, 0.6);
     color: #ffffff;
@@ -267,6 +390,7 @@ a {
     transform: translateY(-2px);
 }
 
+/* Groene knop (bijv. "Stuur een e-mail") */
 .btn-green {
     background: var(--green-700);
     color: #ffffff;
@@ -277,23 +401,33 @@ a {
     transform: translateY(-2px);
 }
 
+/* ------------------------------------------------------------------
+   6. SECTIES
+   Grote blokken content. ".section.soft" heeft een zachte
+   achtergrond, zodat pagina's visueel afwisselen tussen wit/groen.
+   ------------------------------------------------------------------ */
+
+/* ===== Secties en inhoudsblokken ===== */
 .section {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 80px 24px;
 }
 
+/* Zachte variant: licht grijsgroene achtergrond */
 .section.soft {
     max-width: none;
     background: var(--bg-soft);
 }
 
+/* Grote kop (h2) binnen een sectie */
 .section h2 {
     font-size: clamp(1.6rem, 3vw, 2.2rem);
     margin: 0 0 12px;
     color: var(--green-900);
 }
 
+/* Uitlegtekst (lead) onder een h2-kop */
 .section .lead {
     color: var(--text-muted);
     max-width: 640px;
@@ -301,12 +435,20 @@ a {
     font-size: 1.05rem;
 }
 
+/* ------------------------------------------------------------------
+   7. KAARTEN (CARD-GRID)
+   Witte blokken met icoon, titel en uitleg — gebruikt op bijna
+   elke pagina (diensten, over mij, contact, etc.).
+   ------------------------------------------------------------------ */
+
+/* ===== Kaarten (diensten, over mij, social media, etc.) ===== */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
 }
 
+/* Elke individuele kaart */
 .card {
     background: #ffffff;
     border: 1px solid var(--border);
@@ -315,34 +457,45 @@ a {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Hover-effect: kaart komt iets omhoog met schaduw */
 .card:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 30px rgba(18, 61, 38, 0.08);
 }
 
+/* Icoon bovenin de kaart */
 .card .icon {
     font-size: 1.8rem;
     margin-bottom: 14px;
 }
 
+/* Titel van de kaart */
 .card h3 {
     margin: 0 0 8px;
     font-size: 1.15rem;
     color: var(--green-900);
 }
 
+/* Uitlegtekst in de kaart */
 .card p {
     margin: 0;
     color: var(--text-muted);
     font-size: 0.95rem;
 }
 
+/* ------------------------------------------------------------------
+   8. PORTFOLIO-FOLDERS
+   Klikbare "mappen" op de homepage die doorlinken naar projecten.
+   ------------------------------------------------------------------ */
+
+/* ===== Portfolio-folders op de homepage ===== */
 .folder-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 24px;
 }
 
+/* Elke individuele folder (klikbare link) */
 .folder-card {
     display: block;
     text-decoration: none;
@@ -353,11 +506,13 @@ a {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Hover-effect op de folder */
 .folder-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 30px rgba(18, 61, 38, 0.1);
 }
 
+/* De emoji/thumb bovenin de folder */
 .folder-thumb {
     height: 180px;
     display: flex;
@@ -368,6 +523,7 @@ a {
     background: linear-gradient(135deg, var(--green-700), var(--green-900));
 }
 
+/* Tekstblok in de folder */
 .folder-info {
     padding: 20px;
 }
@@ -384,6 +540,12 @@ a {
     font-size: 0.9rem;
 }
 
+/* ------------------------------------------------------------------
+   9. VIDEO- EN FOTOBLOKKEN (PORTFOLIO)
+   YouTube-video's en foto-placeholders op de portfolio-pagina.
+   ------------------------------------------------------------------ */
+
+/* ===== Video- en fotoblokken (portfolio) ===== */
 .video-frame {
     position: relative;
     padding-bottom: 56.25%;
@@ -393,6 +555,7 @@ a {
     border: 1px solid var(--border);
 }
 
+/* YouTube-iframe vult de hele video-frame */
 .video-frame iframe {
     position: absolute;
     top: 0;
@@ -402,6 +565,7 @@ a {
     border: 0;
 }
 
+/* Placeholder als er nog geen video-ID is ingevuld */
 .video-placeholder {
     position: absolute;
     inset: 0;
@@ -416,12 +580,14 @@ a {
     padding: 12px;
 }
 
+/* Grid voor foto's naast elkaar */
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 18px;
 }
 
+/* Placeholder voor een foto die nog moet worden toegevoegd */
 .photo-placeholder {
     height: 200px;
     border-radius: 12px;
@@ -436,6 +602,13 @@ a {
     padding: 12px;
 }
 
+/* ------------------------------------------------------------------
+   10. PROCES-STAPPEN
+   Genummerde kaarten op de procespagina (stap 1 t/m 5).
+   Nummers worden automatisch gegenereerd met CSS-counters.
+   ------------------------------------------------------------------ */
+
+/* ===== Proces-stappen (genummerde blokken) ===== */
 .steps {
     counter-reset: step;
     display: grid;
@@ -443,6 +616,7 @@ a {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+/* Elke individuele stap-kaart */
 .step {
     background: #ffffff;
     border: 1px solid var(--border);
@@ -451,6 +625,7 @@ a {
     counter-increment: step;
 }
 
+/* Het ronde nummer bovenin elke stap (CSS-counter) */
 .step::before {
     content: counter(step);
     display: inline-flex;
@@ -465,20 +640,38 @@ a {
     margin-bottom: 16px;
 }
 
+/* Titel van de stap */
 .step h3 {
     margin: 0 0 8px;
     color: var(--green-900);
 }
 
+/* Uitlegtekst van de stap */
 .step p {
     margin: 0;
     color: var(--text-muted);
     font-size: 0.95rem;
 }
 
+/* ------------------------------------------------------------------
+   11. FAQ-ACCORDION
+   Vragen die je open en dicht kunt klikken. Plus/kruis-icoon wordt
+   getekend met CSS (perfect gecentreerd). JS zet de class ".open".
+   ------------------------------------------------------------------ */
+
+/* ===== FAQ-accordion (vouw vragen open/dicht) ===== */
 .faq-item {
-    border-bottom: 1px solid var(--border);
-    padding: 20px 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+}
+
+/* Hover-effect op een FAQ-vraag */
+.faq-item:hover {
+    border-color: var(--green-700);
 }
 
 .faq-item h3 {
@@ -487,11 +680,105 @@ a {
     color: var(--green-900);
 }
 
+/* De vraag zelf (een <button> zodat je erop kunt klikken) */
+.faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 20px 24px;
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--green-900);
+    text-align: left;
+    cursor: pointer;
+}
+
+/* Het ronde plus-icoon rechts van de vraag (getekend met ::before/::after) */
+.faq-icon {
+    flex-shrink: 0;
+    position: relative;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--green-100);
+    color: var(--green-700);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: currentColor;
+}
+
+/* De horizontale streep van het plusje */
+.faq-icon::before {
+    width: 12px;
+    height: 2px;
+    transform: translate(-50%, -50%);
+}
+
+/* De verticale streep van het plusje */
+.faq-icon::after {
+    width: 2px;
+    height: 12px;
+    transform: translate(-50%, -50%);
+}
+
+/* Als de vraag open is: plusje draait 45° en wordt kruisje */
+.faq-item.open .faq-icon {
+    background: var(--green-700);
+    transform: rotate(45deg);
+}
+
+.faq-item.open .faq-icon::before,
+.faq-item.open .faq-icon::after {
+    background: #ffffff;
+}
+
+/* Antwoordblok: standaard verborgen, verschijnt bij ".open" */
+.faq-answer {
+    display: none;
+    padding: 0 24px 20px;
+}
+
+/* Toon het antwoord alleen als de vraag open is */
+.faq-item.open .faq-answer {
+    display: block;
+}
+
+/* Uitlegtekst in het antwoord */
+.faq-answer p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Links binnen een antwoord (bijv. naar contactpagina) */
+.faq-answer a {
+    color: var(--green-700);
+    text-decoration: underline;
+}
+
 .faq-item p {
     margin: 0;
     color: var(--text-muted);
 }
 
+/* ------------------------------------------------------------------
+   12. CONTACTPAGINA
+   Lijst met e-mail, telefoon en locatie op eigen regels.
+   ------------------------------------------------------------------ */
+
+/* ===== Contactpagina ===== */
 .contact-list {
     list-style: none;
     padding: 0;
@@ -500,6 +787,7 @@ a {
     gap: 14px;
 }
 
+/* Elke regel in de contactlijst (label + waarde) */
 .contact-list li {
     display: flex;
     align-items: center;
@@ -507,12 +795,20 @@ a {
     font-size: 1.05rem;
 }
 
+/* Het label links ("E-mail", "Telefoon", "Locatie") */
 .contact-list .label {
     color: var(--text-muted);
     min-width: 110px;
     font-size: 0.9rem;
 }
 
+/* ------------------------------------------------------------------
+   13. CALL-TO-ACTION BLOKKEN
+   Grote donkergroene blokken onderaan bijna elke pagina,
+   met een gradient-achtergrond voor diepte.
+   ------------------------------------------------------------------ */
+
+/* ===== Grote call-to-action blokken ===== */
 .cta-block {
     background: linear-gradient(120deg, var(--green-900), var(--green-700));
     color: #ffffff;
@@ -521,16 +817,24 @@ a {
     text-align: center;
 }
 
+/* Titel in het CTA-blok */
 .cta-block h2 {
     margin: 0 0 12px;
     color: #ffffff;
 }
 
+/* Uitlegtekst in het CTA-blok */
 .cta-block p {
     color: #d9e7de;
     margin: 0 0 28px;
 }
 
+/* ------------------------------------------------------------------
+   14. FOOTER
+   Donkergroene balk onderaan met brand, socials, links, contact.
+   ------------------------------------------------------------------ */
+
+/* ===== Footer (onderaan elke pagina) ===== */
 .site-footer {
     background: #0d291a;
     color: #b9cfc0;
@@ -538,6 +842,7 @@ a {
     margin-top: 80px;
 }
 
+/* Binnenkant footer in 3 kolommen */
 .footer-inner {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -546,6 +851,7 @@ a {
     gap: 40px;
 }
 
+/* Kolomkoppen in de footer ("Pagina's", "Contact") */
 .site-footer h4 {
     color: #ffffff;
     margin: 0 0 14px;
@@ -554,6 +860,7 @@ a {
     letter-spacing: 1px;
 }
 
+/* Links in de footer */
 .site-footer a {
     color: #b9cfc0;
     text-decoration: none;
@@ -566,6 +873,7 @@ a {
     color: #ffffff;
 }
 
+/* Logo + merknaam in de footer */
 .footer-brand {
     display: flex;
     align-items: center;
@@ -573,33 +881,39 @@ a {
     margin-bottom: 12px;
 }
 
+/* Logo-afbeelding in de footer */
 .footer-brand img {
     width: 44px;
     height: 44px;
     border-radius: 50%;
 }
 
+/* Merknaam "Mediaflow" in de footer */
 .footer-brand strong {
     color: #ffffff;
     font-size: 1.1rem;
 }
 
+/* Woord "flow" in footer-logo (groene accent) */
 .footer-brand .brand-flow {
     color: #7fc79e;
 }
 
+/* Slogan onder het footer-logo */
 .footer-tagline {
     color: #b9cfc0;
     font-size: 0.9rem;
     margin: 0;
 }
 
+/* Rij met social media-icoontjes */
 .social-row {
     display: flex;
     gap: 10px;
     margin-top: 16px;
 }
 
+/* Elke social-icoon-knop (vierkant met afgeronde hoeken) */
 .social-row a {
     display: flex;
     align-items: center;
@@ -612,16 +926,25 @@ a {
     transition: background 0.2s ease;
 }
 
+/* SVG-icoon binnen de knop, perfect gecentreerd */
+.social-row a svg {
+    display: block;
+    margin: auto;
+}
+
+/* Hover-effect op social-icoon */
 .social-row a:hover {
     background: rgba(255, 255, 255, 0.2);
 }
 
+/* De SVG-paden zelf (LinkedIn, Instagram, YouTube, TikTok, Facebook) */
 .social-row svg {
     width: 18px;
     height: 18px;
     fill: #ffffff;
 }
 
+/* Onderste balk van de footer met copyright */
 .footer-bottom {
     max-width: var(--max-width);
     margin: 40px auto 0;
@@ -632,6 +955,14 @@ a {
     text-align: center;
 }
 
+/* ------------------------------------------------------------------
+   15. RESPONSIVITEIT
+   Layout aanpassing voor kleinere schermen:
+   - Max 960px: desktop-menu → hamburger, footer → 1 kolom
+   - Max 600px: secties/hero worden smaller
+   ------------------------------------------------------------------ */
+
+/* ===== Responsiviteit (tablet en mobiel) ===== */
 @media (max-width: 960px) {
     .nav-desktop {
         display: none;
@@ -660,3 +991,130 @@ a {
         padding: 44px 24px;
     }
 }
+
+/* ------------------------------------------------------------------
+   16. MOTION / ANIMATIES
+   Subtiele animaties die bij het scrollen en hoveren verschijnen.
+   Om alles terug te draaien: verwijder dit hele blok (tot
+   "EINDE MOTION") en het motion-blok in script.js.
+   ------------------------------------------------------------------ */
+
+/* ===== MOTION — om terug te draaien: dit blok verwijderen ===== */
+/* Alleen toepassen als de gebruiker GEEN "reduced motion" heeft ingesteld */
+@media (prefers-reduced-motion: no-preference) {
+    /* Hero-elementen verschijnen bij het laden één voor één van onderaf */
+    .hero-inner > * {
+        animation: motion-fade-up 0.7s ease both;
+    }
+
+    .hero-inner > *:nth-child(2) {
+        animation-delay: 0.15s;
+    }
+
+    .hero-inner > *:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    /* Elementen die zachtjes zichtbaar worden bij het scrollen */
+    .motion-reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    /* De status als een element zichtbaar is geworden */
+    .motion-reveal.motion-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Groene CTA-blokken krijgen een eigen pop-in-animatie */
+    .cta-block.motion-reveal {
+        opacity: 0;
+        transform: scale(0.92);
+        transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Eindstatus van de CTA pop-in */
+    .cta-block.motion-reveal.motion-visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* Iconen komen iets omhoog en worden iets groter bij hover */
+    .card:hover .icon,
+    .folder-card:hover .folder-thumb,
+    .step:hover::before {
+        transform: translateY(-4px) scale(1.1);
+    }
+
+    .card .icon,
+    .folder-card .folder-thumb,
+    .step::before {
+        transition: transform 0.25s ease;
+    }
+
+    /* Knoppen krijgen een glans-sweep bij hover */
+    .btn {
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* De glans-streep die over de knop schuift */
+    .btn::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.25) 50%, transparent 70%);
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+        pointer-events: none;
+    }
+
+    /* De glans beweegt bij hover over de knop */
+    .btn:hover::after {
+        transform: translateX(100%);
+    }
+
+    /* Header schuift bij het laden van boven naar beneden */
+    .site-header {
+        animation: motion-slide-down 0.5s ease both;
+    }
+
+    /* CTA-blokken krijgen een lichte lift bij hover */
+    .cta-block {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cta-block:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 40px rgba(18, 61, 38, 0.1);
+    }
+}
+
+/* Animatie: element verschijnt van onderaf en wordt zichtbaar */
+@keyframes motion-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animatie: element verschijnt van bovenaf en wordt zichtbaar */
+@keyframes motion-slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ===== EINDE MOTION ===== */

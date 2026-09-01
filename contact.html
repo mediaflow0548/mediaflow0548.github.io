@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<!-- ==================================================================
+     Mediaflow — Contact (Nederlands)
+     ------------------------------------------------------------------
+     Contactinformatie (e-mail, telefoon, locatie), social media-kaarten
+     en een CTA-blok om een offerte aan te vragen.
+     ================================================================== -->
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
@@ -9,8 +15,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Lege header — wordt gevuld door script.js -->
     <header class="site-header"></header>
 
+    <!-- HERO -->
     <section class="hero small">
         <div class="hero-inner">
             <h1>Contact</h1>
@@ -18,9 +26,10 @@
         </div>
     </section>
 
+    <!-- CONTACTLIJST: e-mail, telefoon en locatie (locatie linkt naar Google Maps) -->
     <section class="section">
         <h2>Neem contact op</h2>
-        <p class="lead">Vertel me kort wat je zoekt, dan hoor je snel van me.</p>
+        <p class="lead">Vertel me kort wat je zoekt, dan hoor je snel van me. Je hoeft nooit te aarzelen — of het nu om een grote opdracht gaat, een kleine vraag of gewoon even wat achtergrondinformatie: je mag me altijd mailen of een berichtje sturen, over alles wat met beelden te maken heeft (en eigenlijk ook daarbuiten).</p>
         <ul class="contact-list">
             <li>
                 <span class="label">E-mail</span>
@@ -32,12 +41,13 @@
             </li>
             <li>
                 <span class="label">Locatie</span>
-                <span>Holten, Overijssel</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Holten%2C+Overijssel" target="_blank" rel="noopener">Holten, Overijssel</a>
             </li>
         </ul>
         <a href="mailto:mediaflow0548@outlook.com?subject=Offerte%20aanvragen%20Mediaflow" class="btn btn-green">✉ Stuur een e-mail</a>
     </section>
 
+    <!-- SOCIAL MEDIA: kaarten worden hier ingevuld door buildSocialCards() -->
     <section class="section soft">
         <div class="section">
             <h2>Of vind me op social media</h2>
@@ -46,14 +56,16 @@
         </div>
     </section>
 
+    <!-- CTA-BLOK: directe mailto-link voor een offerte-aanvraag -->
     <section class="section">
         <div class="cta-block">
             <h2>Zullen we je project plannen?</h2>
             <p>De eerste stap is simpel: een berichtje sturen.</p>
-            <a href="mailto:mediaflow0548@outlook.com?subject=Offerte%20aanvragen%20Mediaflow" class="btn btn-primary">Vraag een offerte aan</a>
+            <a href="mailto:mediaflow0548@outlook.com?subject=Offerte%20aanvragen%20Mediaflow" class="btn btn-primary">Vraag een offerte via e-mail</a>
         </div>
     </section>
 
+    <!-- Lege footer — wordt gevuld door script.js -->
     <footer class="site-footer"></footer>
     <script src="script.js"></script>
 </body>
