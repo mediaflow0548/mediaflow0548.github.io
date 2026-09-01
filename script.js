@@ -253,7 +253,7 @@ const ROOT_PREFIX = currentLanguage() === 'nl' ? '' : '../';
 // lege <header class="site-header"></header>-element op elke pagina.
 // ------------------------------------------------------------------
 function buildHeader() {
-    // Prefix voor paden naar bestanden in de root (logo.png).
+    // Prefix voor paden naar bestanden in de root (assets/logo.png).
     // Op NL-pagina's is dit leeg, op vertaalde pagina's "../".
     const rootPrefix = ROOT_PREFIX;
     // Vertaalde teksten voor de huidige taal
@@ -277,7 +277,7 @@ function buildHeader() {
     return `
         <div class="header-inner">
             <a href="index.html" class="brand">
-                <img src="${rootPrefix}logo.png" alt="Mediaflow logo">
+                <img src="${rootPrefix}assets/logo.png" alt="Mediaflow logo">
                 <span>Media<span class="brand-flow">flow</span></span>
             </a>
             <nav class="nav-desktop">
@@ -319,7 +319,7 @@ function buildFooter() {
         <div class="footer-inner">
             <div>
                 <div class="footer-brand">
-                    <img src="${rootPrefix}logo.png" alt="Mediaflow logo">
+                    <img src="${rootPrefix}assets/logo.png" alt="Mediaflow logo">
                     <strong>Media<span class="brand-flow">flow</span></strong>
                 </div>
                 <p class="footer-tagline">${t.tagline}</p>
