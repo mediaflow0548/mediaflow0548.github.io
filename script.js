@@ -80,6 +80,42 @@ const SOCIAL_LINKS = [
 ];
 
 // ------------------------------------------------------------------
+// 2b. LANGUAGE_FLAGS
+// Kleine inline SVG-vlaggetjes per taal, handgetekend met rechthoeken.
+// Emoji-vlaggen worden niet op alle Windows-versies ondersteund, dus
+// tekenen we ze zelf — zo werkt het op elk apparaat/browser.
+// Elke vlag is 20x14 px met een dunne rand (via CSS).
+// ------------------------------------------------------------------
+const LANGUAGE_FLAGS = {
+    // Nederland: rood-wit-blauw horizontale banen
+    nl: `<svg class="lang-flag" viewBox="0 0 20 14" aria-hidden="true">
+            <rect width="20" height="14" fill="#AE1C28"/>
+            <rect y="4.67" width="20" height="4.67" fill="#ffffff"/>
+            <rect y="9.33" width="20" height="4.67" fill="#21468B"/>
+        </svg>`,
+    // Verenigd Koninkrijk (Engels): Union Jack (vereenvoudigd)
+    en: `<svg class="lang-flag" viewBox="0 0 20 14" aria-hidden="true">
+            <rect width="20" height="14" fill="#012169"/>
+            <path d="M0,0 L20,14 M20,0 L0,14" stroke="#ffffff" stroke-width="2.8"/>
+            <path d="M0,0 L20,14 M20,0 L0,14" stroke="#C8102E" stroke-width="1.4"/>
+            <path d="M10,0 V14 M0,7 H20" stroke="#ffffff" stroke-width="4.5"/>
+            <path d="M10,0 V14 M0,7 H20" stroke="#C8102E" stroke-width="2.5"/>
+        </svg>`,
+    // Duitsland: zwart-rood-geel horizontale banen
+    de: `<svg class="lang-flag" viewBox="0 0 20 14" aria-hidden="true">
+            <rect width="20" height="14" fill="#000000"/>
+            <rect y="4.67" width="20" height="4.67" fill="#DD0000"/>
+            <rect y="9.33" width="20" height="4.67" fill="#FFCE00"/>
+        </svg>`,
+    // Frankrijk: blauw-wit-rood verticale banen
+    fr: `<svg class="lang-flag" viewBox="0 0 20 14" aria-hidden="true">
+            <rect width="20" height="14" fill="#0055A4"/>
+            <rect x="6.67" width="6.67" height="14" fill="#ffffff"/>
+            <rect x="13.33" width="6.67" height="14" fill="#EF4135"/>
+        </svg>`,
+};
+
+// ------------------------------------------------------------------
 // 3. currentPage()
 // Haalt de bestandsnaam uit de URL (bijv. "index.html" of "faq.html").
 // Wordt gebruikt om de actieve menu-link te markeren en om de
@@ -118,19 +154,20 @@ function buildLanguageSwitcher() {
     const inSubfolder = current !== 'nl';
     const rootPrefix = inSubfolder ? '../' : '';
     const languages = [
-        { code: 'nl', flag: '🇳🇱', label: 'NL', title: 'Nederlands', prefix: '' },
-        { code: 'en', flag: '🇬🇧', label: 'EN', title: 'English', prefix: 'en/' },
-        { code: 'de', flag: '🇩🇪', label: 'DE', title: 'Deutsch', prefix: 'de/' },
-        { code: 'fr', flag: '🇫🇷', label: 'FR', title: 'Français', prefix: 'fr/' },
+        { code: 'nl', label: 'NL', title: 'Nederlands', prefix: '' },
+        { code: 'en', label: 'EN', title: 'English', prefix: 'en/' },
+        { code: 'de', label: 'DE', title: 'Deutsch', prefix: 'de/' },
+        { code: 'fr', label: 'FR', title: 'Français', prefix: 'fr/' },
     ];
 
     return languages.map((lang) => {
         const active = lang.code === current;
         const href = active ? '' : `${rootPrefix}${lang.prefix}${page}`;
+        const flag = LANGUAGE_FLAGS[lang.code];
         if (active) {
-            return `<button type="button" class="active" disabled title="${lang.title}"><span class="lang-flag">${lang.flag}</span> ${lang.label}</button>`;
+            return `<button type="button" class="active" disabled title="${lang.title}">${flag} ${lang.label}</button>`;
         }
-        return `<a href="${href}" title="${lang.title}"><span class="lang-flag">${lang.flag}</span> ${lang.label}</a>`;
+        return `<a href="${href}" title="${lang.title}">${flag} ${lang.label}</a>`;
     }).join('');
 }
 
