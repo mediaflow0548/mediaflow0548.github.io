@@ -189,6 +189,13 @@ a {
     margin-left: 12px;
 }
 
+/* Vlag-emoji binnen een taalknop (iets groter zodat hij leesbaar is) */
+.lang-flag {
+    font-size: 0.95rem;
+    line-height: 1;
+    vertical-align: middle;
+}
+
 /* Elke taalknop (actieve taal is button, andere zijn links) */
 .lang-switch button {
     border: 1px solid var(--border);

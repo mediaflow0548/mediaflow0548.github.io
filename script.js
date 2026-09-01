@@ -118,19 +118,19 @@ function buildLanguageSwitcher() {
     const inSubfolder = current !== 'nl';
     const rootPrefix = inSubfolder ? '../' : '';
     const languages = [
-        { code: 'nl', label: 'NL', title: 'Nederlands', prefix: '' },
-        { code: 'en', label: 'EN', title: 'English', prefix: 'en/' },
-        { code: 'de', label: 'DE', title: 'Deutsch', prefix: 'de/' },
-        { code: 'fr', label: 'FR', title: 'Français', prefix: 'fr/' },
+        { code: 'nl', flag: '🇳🇱', label: 'NL', title: 'Nederlands', prefix: '' },
+        { code: 'en', flag: '🇬🇧', label: 'EN', title: 'English', prefix: 'en/' },
+        { code: 'de', flag: '🇩🇪', label: 'DE', title: 'Deutsch', prefix: 'de/' },
+        { code: 'fr', flag: '🇫🇷', label: 'FR', title: 'Français', prefix: 'fr/' },
     ];
 
     return languages.map((lang) => {
         const active = lang.code === current;
         const href = active ? '' : `${rootPrefix}${lang.prefix}${page}`;
         if (active) {
-            return `<button type="button" class="active" disabled title="${lang.title}">${lang.label}</button>`;
+            return `<button type="button" class="active" disabled title="${lang.title}"><span class="lang-flag">${lang.flag}</span> ${lang.label}</button>`;
         }
-        return `<a href="${href}" title="${lang.title}">${lang.label}</a>`;
+        return `<a href="${href}" title="${lang.title}"><span class="lang-flag">${lang.flag}</span> ${lang.label}</a>`;
     }).join('');
 }
 
