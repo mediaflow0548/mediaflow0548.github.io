@@ -185,17 +185,23 @@ a {
 /* Taalknoppen: NL, EN, DE, FR */
 .lang-switch {
     display: flex;
-    gap: 4px;
-    margin-left: 12px;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
 }
 
 /* Elke taalknop (actieve taal is button, andere zijn links) */
 .lang-switch button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
     border: 1px solid var(--border);
     background: #ffffff;
     color: var(--text-muted);
     font-size: 0.8rem;
-    padding: 4px 8px;
+    padding: 3px 7px;
+    line-height: 1;
     border-radius: 999px;
     cursor: pointer;
 }
@@ -214,11 +220,16 @@ a {
 }
 
 .lang-switch a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
     border: 1px solid var(--border);
     background: #ffffff;
     color: var(--text-muted);
     font-size: 0.8rem;
-    padding: 4px 8px;
+    padding: 3px 7px;
+    line-height: 1;
     border-radius: 999px;
     text-decoration: none;
     transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
@@ -226,12 +237,11 @@ a {
 
 /* SVG-vlaggetje in de taalknop (inline getekend, werkt op elk systeem) */
 .lang-flag {
-    width: 20px;
-    height: 14px;
+    width: 16px;
+    height: 11px;
     border-radius: 3px;
     outline: 1px solid rgba(0, 0, 0, 0.15);
-    vertical-align: middle;
-    margin-right: 4px;
+    flex-shrink: 0;
 }
 
 .lang-switch a:hover {
