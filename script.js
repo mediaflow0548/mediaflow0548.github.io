@@ -134,6 +134,10 @@ function buildLanguageSwitcher() {
     }).join('');
 }
 
+// `rootPrefix` is leeg op de NL-pagina's (root) en "../" op de
+// vertaalde pagina's (en/, de/, fr/) — zodat logo-paden kloppen.
+const ROOT_PREFIX = currentLanguage() === 'nl' ? '' : '../';
+
 // ------------------------------------------------------------------
 // 6. buildHeader()
 // Bouwt de complete header: logo links, menu + taalknoppen rechts,
@@ -141,6 +145,10 @@ function buildLanguageSwitcher() {
 // lege <header class="site-header"></header>-element op elke pagina.
 // ------------------------------------------------------------------
 function buildHeader() {
+    // Prefix voor paden naar bestanden in de root (logo.png).
+    // Op NL-pagina's is dit leeg, op vertaalde pagina's "../".
+    const rootPrefix = ROOT_PREFIX;
+
     const active = currentPage();
     const links = NAV_ITEMS.map((item) => {
         const classes = [item.cta ? 'nav-cta' : '', active === item.href ? 'active' : '']
@@ -185,6 +193,9 @@ function buildHeader() {
 // in het lege <footer class="site-footer"></footer>-element op elke pagina.
 // ------------------------------------------------------------------
 function buildFooter() {
+    // Zelfde prefix-logica als in buildHeader() voor het logo-pad
+    const rootPrefix = ROOT_PREFIX;
+
     const pageLinks = NAV_ITEMS.map((item) => `<a href="${item.href}">${item.label}</a>`).join('');
     const socials = SOCIAL_LINKS.map((social) => `
         <a href="${social.href}" target="_blank" rel="noopener" title="${social.title}">
