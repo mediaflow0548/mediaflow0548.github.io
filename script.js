@@ -19,22 +19,93 @@
 
 // ------------------------------------------------------------------
 // 1. NAV_ITEMS
-// De volgorde en labels van alle pagina's. Deze lijst wordt gebruikt
-// voor BOTH het desktopmenu, het mobiele menu EN de footer-links.
+// De volgorde van alle pagina's. De labels (teksten) komen per taal
+// uit I18N hieronder — zo zijn menu en footer automatisch vertaald.
 // `cta: true` zorgt dat de "Contact"-link er als knop uit gaat zien.
 // Wil je een pagina toevoegen/verwijderen of hernoemen? Pas het hier,
 // dan past het automatisch overal.
 // ------------------------------------------------------------------
 const NAV_ITEMS = [
-    { href: 'index.html', label: 'Home' },
-    { href: 'diensten.html', label: 'Diensten' },
-    { href: 'portfolio.html', label: 'Portfolio' },
-    { href: 'over-mij.html', label: 'Over mij' },
-    { href: 'tarieven.html', label: 'Tarieven' },
-    { href: 'proces.html', label: 'Proces' },
-    { href: 'faq.html', label: 'FAQ' },
-    { href: 'contact.html', label: 'Contact', cta: true },
+    { href: 'index.html', key: 'home' },
+    { href: 'diensten.html', key: 'diensten' },
+    { href: 'portfolio.html', key: 'portfolio' },
+    { href: 'over-mij.html', key: 'overMij' },
+    { href: 'tarieven.html', key: 'tarieven' },
+    { href: 'proces.html', key: 'proces' },
+    { href: 'faq.html', key: 'faq' },
+    { href: 'contact.html', key: 'contact', cta: true },
 ];
+
+// ------------------------------------------------------------------
+// 1b. I18N (vertalingen voor header en footer)
+// Alle teksten die in de header (menu) en footer (paginalinks,
+// kolomkoppen, slogan, copyright) staan, per taal. De actieve taal
+// wordt bepaald door currentLanguage(). Wil je een tekst aanpassen
+// of toevoegen? Doe het hier, dan geldt het voor alle pagina's in
+// die taal.
+// ------------------------------------------------------------------
+const I18N = {
+    nl: {
+        home: 'Home',
+        diensten: 'Diensten',
+        portfolio: 'Portfolio',
+        overMij: 'Over mij',
+        tarieven: 'Tarieven',
+        proces: 'Proces',
+        faq: 'FAQ',
+        contact: 'Contact',
+        pagesTitle: 'Pagina\u2019s',
+        contactTitle: 'Contact',
+        tagline: 'Drone videografie & promotievideo\u2019s',
+        location: 'Holten, Overijssel',
+        copyright: '© 2026 Mediaflow — Jaap Spakman',
+    },
+    en: {
+        home: 'Home',
+        diensten: 'Services',
+        portfolio: 'Portfolio',
+        overMij: 'About me',
+        tarieven: 'Rates',
+        proces: 'Process',
+        faq: 'FAQ',
+        contact: 'Contact',
+        pagesTitle: 'Pages',
+        contactTitle: 'Contact',
+        tagline: 'Drone videography & promotional videos',
+        location: 'Holten, Overijssel',
+        copyright: '© 2026 Mediaflow — Jaap Spakman',
+    },
+    de: {
+        home: 'Start',
+        diensten: 'Leistungen',
+        portfolio: 'Portfolio',
+        overMij: 'Über mich',
+        tarieven: 'Preise',
+        proces: 'Ablauf',
+        faq: 'FAQ',
+        contact: 'Kontakt',
+        pagesTitle: 'Seiten',
+        contactTitle: 'Kontakt',
+        tagline: 'Drohnenvideografie & Werbevideos',
+        location: 'Holten, Overijssel',
+        copyright: '© 2026 Mediaflow — Jaap Spakman',
+    },
+    fr: {
+        home: 'Accueil',
+        diensten: 'Services',
+        portfolio: 'Portfolio',
+        overMij: 'À propos',
+        tarieven: 'Tarifs',
+        proces: 'Processus',
+        faq: 'FAQ',
+        contact: 'Contact',
+        pagesTitle: 'Pages',
+        contactTitle: 'Contact',
+        tagline: 'Vidéographie par drone & vidéos promotionnelles',
+        location: 'Holten, Overijssel',
+        copyright: '© 2026 Mediaflow — Jaap Spakman',
+    },
+};
 
 // ------------------------------------------------------------------
 // 2. SOCIAL_LINKS
@@ -185,20 +256,22 @@ function buildHeader() {
     // Prefix voor paden naar bestanden in de root (logo.png).
     // Op NL-pagina's is dit leeg, op vertaalde pagina's "../".
     const rootPrefix = ROOT_PREFIX;
+    // Vertaalde teksten voor de huidige taal
+    const t = I18N[currentLanguage()];
 
     const active = currentPage();
     const links = NAV_ITEMS.map((item) => {
         const classes = [item.cta ? 'nav-cta' : '', active === item.href ? 'active' : '']
             .filter(Boolean)
             .join(' ');
-        return `<a href="${item.href}" class="${classes}">${item.label}</a>`;
+        return `<a href="${item.href}" class="${classes}">${t[item.key]}</a>`;
     }).join('');
 
     const mobileLinks = NAV_ITEMS.map((item) => {
         const classes = [item.cta ? 'nav-cta' : '', active === item.href ? 'active' : '']
             .filter(Boolean)
             .join(' ');
-        return `<a href="${item.href}" class="${classes}">${item.label}</a>`;
+        return `<a href="${item.href}" class="${classes}">${t[item.key]}</a>`;
     }).join('');
 
     return `
@@ -232,8 +305,10 @@ function buildHeader() {
 function buildFooter() {
     // Zelfde prefix-logica als in buildHeader() voor het logo-pad
     const rootPrefix = ROOT_PREFIX;
+    // Vertaalde teksten voor de huidige taal
+    const t = I18N[currentLanguage()];
 
-    const pageLinks = NAV_ITEMS.map((item) => `<a href="${item.href}">${item.label}</a>`).join('');
+    const pageLinks = NAV_ITEMS.map((item) => `<a href="${item.href}">${t[item.key]}</a>`).join('');
     const socials = SOCIAL_LINKS.map((social) => `
         <a href="${social.href}" target="_blank" rel="noopener" title="${social.title}">
             <svg viewBox="${social.viewBox}"><path d="${social.path}"/></svg>
@@ -247,21 +322,21 @@ function buildFooter() {
                     <img src="${rootPrefix}logo.png" alt="Mediaflow logo">
                     <strong>Media<span class="brand-flow">flow</span></strong>
                 </div>
-                <p class="footer-tagline">Drone videografie &amp; promotievideo's</p>
+                <p class="footer-tagline">${t.tagline}</p>
                 <div class="social-row">${socials}</div>
             </div>
             <div>
-                <h4>Pagina's</h4>
+                <h4>${t.pagesTitle}</h4>
                 ${pageLinks}
             </div>
             <div>
-                <h4>Contact</h4>
+                <h4>${t.contactTitle}</h4>
                 <a href="mailto:mediaflow0548@outlook.com">mediaflow0548@outlook.com</a>
                 <a href="tel:+31618643610">+31 6 18643610</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Holten%2C+Overijssel" target="_blank" rel="noopener">Holten, Overijssel</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Holten%2C+Overijssel" target="_blank" rel="noopener">${t.location}</a>
             </div>
         </div>
-        <div class="footer-bottom">© 2026 Mediaflow — Jaap Spakman</div>
+        <div class="footer-bottom">${t.copyright}</div>
     `;
 }
 
