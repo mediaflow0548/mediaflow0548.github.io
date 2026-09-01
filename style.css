@@ -209,7 +209,7 @@ a {
 }
 
 .lang-switch button:disabled {
-    opacity: 0.45;
+    opacity: 0.75;
     cursor: not-allowed;
 }
 
