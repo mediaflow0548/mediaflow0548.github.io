@@ -786,6 +786,15 @@ a {
     right: 16px;
 }
 
+/* Compactere sectie rondom de before/after-slider */
+.section.ba-section {
+    padding: 48px 24px;
+}
+
+.section.ba-section .section {
+    padding: 0;
+}
+
 /* ------------------------------------------------------------------
    11. FAQ-ACCORDION
    Vragen die je open en dicht kunt klikken. Plus/kruis-icoon wordt
