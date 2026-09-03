@@ -543,6 +543,19 @@ a {
     background: linear-gradient(135deg, var(--green-700), var(--green-900));
 }
 
+/* Foto-thumb in projectkaarten: vult de bovenkant van de kaart */
+.folder-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Hover-verschuiving werkt nu op de hele afbeelding in plaats van alleen het emoji-vlak */
+.folder-card:hover .folder-thumb img {
+    transform: translateY(-4px) scale(1.05);
+}
+
 /* Tekstblok in de folder */
 .folder-info {
     padding: 20px;
@@ -1190,13 +1203,13 @@ a {
 
     /* Iconen komen iets omhoog en worden iets groter bij hover */
     .card:hover .icon,
-    .folder-card:hover .folder-thumb,
+    .folder-card:hover .folder-thumb img,
     .step:hover::before {
         transform: translateY(-4px) scale(1.1);
     }
 
     .card .icon,
-    .folder-card .folder-thumb,
+    .folder-card .folder-thumb img,
     .step::before {
         transition: transform 0.25s ease;
     }
