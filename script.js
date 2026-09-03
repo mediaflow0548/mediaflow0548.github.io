@@ -442,4 +442,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
     motionTargets.forEach((target) => motionObserver.observe(target));
     // EINDE MOTION
+
+    // f. BEFORE/AFTER-SCROLL-SLIDER (dienstenpagina)
+    // Beweeg de muis (of je vinger) over het beeld en de slider volgt
+    // soepel mee dankzij een "lerp"-animatie (lineaire interpolatie).
+    const baSlider = document.getElementById('baSlider');
+    if (baSlider) {
+        const beforeWrap = document.getElementById('baBeforeWrap');
+        const handle = document.getElementById('baHandle');
+        let targetPos = 50;   // waar de muis heen wil (0-100%)
+        let currentPos = 50;  // waar de slider nu is (0-100%)
+        let animating = false;
+
+        function setPositions(pos) {
+            beforeWrap.style.width = pos + '%';
+            handle.style.left = pos + '%';
+        }
+
+        function animate() {
+            // Soepel: beweeg 15% richting doel per frame
+            currentPos += (targetPos - currentPos) * 0.15;
+            if (Math.abs(targetPos - currentPos) < 0.1) {
+                currentPos = targetPos;
+            }
+            setPositions(currentPos);
+            if (currentPos !== targetPos) {
+                requestAnimationFrame(animate);
+            } else {
+                animating = false;
+            }
+        }
+
+        function startAnimation() {
+            if (!animating) {
+                animating = true;
+                requestAnimationFrame(animate);
+            }
+        }
+
+        function posFromEvent(e) {
+            const rect = baSlider.getBoundingClientRect();
+            const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+            return Math.min(100, Math.max(0, (x / rect.width) * 100));
+        }
+
+        baSlider.addEventListener('mousemove', (e) => {
+            targetPos = posFromEvent(e);
+            startAnimation();
+        });
+
+        baSlider.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            targetPos = posFromEvent(e);
+            startAnimation();
+        }, { passive: false });
+
+        // Begin op 50% (half voor, half na)
+        setPositions(currentPos);
+    }
 });
