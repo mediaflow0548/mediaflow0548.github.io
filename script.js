@@ -58,6 +58,10 @@ const I18N = {
         contactTitle: 'Contact',
         tagline: 'Drone videografie & promotievideo\u2019s',
         location: 'Holten, Overijssel',
+        legalTitle: 'Juridisch',
+        certificate: 'Dronecertificaat A1/A3',
+        privacy: 'Privacyverklaring',
+        disclaimer: 'Disclaimer',
         copyright: '© 2026 Mediaflow — Jaap Spakman',
     },
     en: {
@@ -73,6 +77,10 @@ const I18N = {
         contactTitle: 'Contact',
         tagline: 'Drone videography & promotional videos',
         location: 'Holten, Overijssel',
+        legalTitle: 'Legal',
+        certificate: 'Drone certificate A1/A3',
+        privacy: 'Privacy Policy',
+        disclaimer: 'Disclaimer',
         copyright: '© 2026 Mediaflow — Jaap Spakman',
     },
     de: {
@@ -88,6 +96,10 @@ const I18N = {
         contactTitle: 'Kontakt',
         tagline: 'Drohnenvideografie & Werbevideos',
         location: 'Holten, Overijssel',
+        legalTitle: 'Rechtliches',
+        certificate: 'Drohnenzertifikat A1/A3',
+        privacy: 'Datenschutzerklärung',
+        disclaimer: 'Haftungsausschluss',
         copyright: '© 2026 Mediaflow — Jaap Spakman',
     },
     fr: {
@@ -103,6 +115,10 @@ const I18N = {
         contactTitle: 'Contact',
         tagline: 'Vidéographie par drone & vidéos promotionnelles',
         location: 'Holten, Overijssel',
+        legalTitle: 'Mentions légales',
+        certificate: 'Certificat de drone A1/A3',
+        privacy: 'Politique de confidentialité',
+        disclaimer: 'Avertissement',
         copyright: '© 2026 Mediaflow — Jaap Spakman',
     },
 };
@@ -325,7 +341,7 @@ function buildFooter() {
                 <p class="footer-tagline">${t.tagline}</p>
                 <div class="social-row">${socials}</div>
             </div>
-            <div>
+            <div class="footer-pages">
                 <h4>${t.pagesTitle}</h4>
                 ${pageLinks}
             </div>
@@ -335,6 +351,18 @@ function buildFooter() {
                 <a href="tel:+31618643610">+31 6 18643610</a>
                 <a href="https://www.google.com/maps/search/?api=1&query=Holten%2C+Overijssel" target="_blank" rel="noopener">${t.location}</a>
             </div>
+            <div class="footer-legal">
+                <h4>${t.legalTitle}</h4>
+                <a href="${rootPrefix}privacyverklaring.html">${t.privacy}</a>
+                <a href="${rootPrefix}disclaimer.html">${t.disclaimer}</a>
+            </div>
+        </div>
+        <div class="footer-certificate">
+            <h4>${t.certificate}</h4>
+            <a href="${rootPrefix}assets/docs/UAS-A1-A3-certificate-23788177.pdf" target="_blank" rel="noopener" aria-label="${t.certificate}">
+                <img src="${rootPrefix}assets/drone-certificaat.svg" alt="Dronecertificaat A1/A3">
+                <span>Bekijk certificaat (PDF)</span>
+            </a>
         </div>
         <div class="footer-bottom">${t.copyright}</div>
     `;
