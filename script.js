@@ -1,26 +1,26 @@
-﻿// ==================================================================
-// Mediaflow â€” script.js
+// ==================================================================
+// Mediaflow — script.js
 // ------------------------------------------------------------------
 // Dit bestand bevat ALLE JavaScript voor de hele website (alle talen).
 // Elke pagina in /, /en/, /de/ en /fr/ laadt dit ene bestand.
 //
 // Opbouw (boven naar beneden):
-// 1. NAV_ITEMS      â€” lijst van alle pagina's (voor menu en footer)
-// 2. SOCIAL_LINKS   â€” social media-iconen (SVG-paden)
-// 3. currentPage()  â€” bepaalt op welke pagina we zijn
-// 4. currentLanguage() â€” bepaalt in welke taal we zijn (nl/en/de/fr)
-// 5. buildLanguageSwitcher() â€” bouwt de NL/EN/DE/FR knoppen
-// 6. buildHeader()  â€” bouwt de header met logo, menu en taalknoppen
-// 7. buildFooter()  â€” bouwt de footer met brand, socials en links
-// 8. buildSocialCards() â€” vult de social-kaarten op de contactpagina
-// 9. DOMContentLoaded â€” start alles op zodra de pagina is geladen:
+// 1. NAV_ITEMS      — lijst van alle pagina's (voor menu en footer)
+// 2. SOCIAL_LINKS   — social media-iconen (SVG-paden)
+// 3. currentPage()  — bepaalt op welke pagina we zijn
+// 4. currentLanguage() — bepaalt in welke taal we zijn (nl/en/de/fr)
+// 5. buildLanguageSwitcher() — bouwt de NL/EN/DE/FR knoppen
+// 6. buildHeader()  — bouwt de header met logo, menu en taalknoppen
+// 7. buildFooter()  — bouwt de footer met brand, socials en links
+// 8. buildSocialCards() — vult de social-kaarten op de contactpagina
+// 9. DOMContentLoaded — start alles op zodra de pagina is geladen:
 //    header/footer injecteren, hamburger, FAQ-accordion, motion
 // ==================================================================
 
 // ------------------------------------------------------------------
 // 1. NAV_ITEMS
 // De volgorde van alle pagina's. De labels (teksten) komen per taal
-// uit I18N hieronder â€” zo zijn menu en footer automatisch vertaald.
+// uit I18N hieronder — zo zijn menu en footer automatisch vertaald.
 // `cta: true` zorgt dat de "Contact"-link er als knop uit gaat zien.
 // Wil je een pagina toevoegen/verwijderen of hernoemen? Pas het hier,
 // dan past het automatisch overal.
@@ -62,7 +62,7 @@ const I18N = {
         certificate: 'Dronecertificaat A1/A3',
         privacy: 'Privacyverklaring',
         disclaimer: 'Disclaimer',
-        copyright: 'Â© 2026 Mediaflow â€” Jaap Spakman',
+        copyright: '© 2026 Mediaflow — Jaap Spakman',
     },
     en: {
         home: 'Home',
@@ -81,13 +81,13 @@ const I18N = {
         certificate: 'Drone certificate A1/A3',
         privacy: 'Privacy Policy',
         disclaimer: 'Disclaimer',
-        copyright: 'Â© 2026 Mediaflow â€” Jaap Spakman',
+        copyright: '© 2026 Mediaflow — Jaap Spakman',
     },
     de: {
         home: 'Start',
         diensten: 'Leistungen',
         portfolio: 'Portfolio',
-        overMij: 'Ãœber mich',
+        overMij: 'Über mich',
         tarieven: 'Preise',
         proces: 'Ablauf',
         faq: 'FAQ',
@@ -98,39 +98,39 @@ const I18N = {
         location: 'Holten, Overijssel',
         legalTitle: 'Rechtliches',
         certificate: 'Drohnenzertifikat A1/A3',
-        privacy: 'DatenschutzerklÃ¤rung',
+        privacy: 'Datenschutzerklärung',
         disclaimer: 'Haftungsausschluss',
-        copyright: 'Â© 2026 Mediaflow â€” Jaap Spakman',
+        copyright: '© 2026 Mediaflow — Jaap Spakman',
     },
     fr: {
         home: 'Accueil',
         diensten: 'Services',
         portfolio: 'Portfolio',
-        overMij: 'Ã€ propos',
+        overMij: 'À propos',
         tarieven: 'Tarifs',
         proces: 'Processus',
         faq: 'FAQ',
         contact: 'Contact',
         pagesTitle: 'Pages',
         contactTitle: 'Contact',
-        tagline: 'VidÃ©ographie par drone & vidÃ©os promotionnelles',
+        tagline: 'Vidéographie par drone & vidéos promotionnelles',
         location: 'Holten, Overijssel',
-        legalTitle: 'Mentions lÃ©gales',
+        legalTitle: 'Mentions légales',
         certificate: 'Certificat de drone A1/A3',
-        privacy: 'Politique de confidentialitÃ©',
+        privacy: 'Politique de confidentialité',
         disclaimer: 'Avertissement',
-        copyright: 'Â© 2026 Mediaflow â€” Jaap Spakman',
+        copyright: '© 2026 Mediaflow — Jaap Spakman',
     },
 };
 
 // ------------------------------------------------------------------
 // 2. SOCIAL_LINKS
 // Elk social-icoon bestaat uit:
-//   href     â€” de URL waar de link naartoe gaat
-//   title    â€” tooltip en label op de contactpagina
-//   viewBox  â€” het tekengebied van de SVG (elk icoon heeft eigen afmetingen,
+//   href     — de URL waar de link naartoe gaat
+//   title    — tooltip en label op de contactpagina
+//   viewBox  — het tekengebied van de SVG (elk icoon heeft eigen afmetingen,
 //              hierdoor worden iconen niet afgesneden of scheef gecentreerd)
-//   path     â€” de SVG-vorm zelf (een lange lijn van coÃ¶rdinaten die
+//   path     — de SVG-vorm zelf (een lange lijn van coördinaten die
 //              samen het icoontje tekent)
 // ------------------------------------------------------------------
 const SOCIAL_LINKS = [
@@ -170,7 +170,7 @@ const SOCIAL_LINKS = [
 // 2b. LANGUAGE_FLAGS
 // Kleine inline SVG-vlaggetjes per taal, handgetekend met rechthoeken.
 // Emoji-vlaggen worden niet op alle Windows-versies ondersteund, dus
-// tekenen we ze zelf â€” zo werkt het op elk apparaat/browser.
+// tekenen we ze zelf — zo werkt het op elk apparaat/browser.
 // Elke vlag is 20x14 px met een dunne rand (via CSS).
 // ------------------------------------------------------------------
 const LANGUAGE_FLAGS = {
@@ -217,8 +217,8 @@ function currentPage() {
 // ------------------------------------------------------------------
 // 4. currentLanguage()
 // Kijkt in welke map de pagina zich bevindt:
-//   /en/ â†’ Engels, /de/ â†’ Duits, /fr/ â†’ Frans
-//   geen van deze â†’ standaard Nederlands (de root)
+//   /en/ → Engels, /de/ → Duits, /fr/ → Frans
+//   geen van deze → standaard Nederlands (de root)
 // ------------------------------------------------------------------
 function currentLanguage() {
     const path = window.location.pathname;
@@ -233,7 +233,7 @@ function currentLanguage() {
 // Bouwt de NL/EN/DE/FR-knoppen in de header. De actieve taal wordt
 // een disabled button (niet klikbaar, gemarkeerd). De andere talen
 // worden links naar dezelfde pagina in de juiste map.
-// Bijv.: je staat op /en/faq.html en klikt DE â†’ je gaat naar /de/faq.html.
+// Bijv.: je staat op /en/faq.html en klikt DE → je gaat naar /de/faq.html.
 // ------------------------------------------------------------------
 function buildLanguageSwitcher() {
     const current = currentLanguage();
@@ -244,7 +244,7 @@ function buildLanguageSwitcher() {
         { code: 'nl', label: 'NL', title: 'Nederlands', prefix: '' },
         { code: 'en', label: 'EN', title: 'English', prefix: 'en/' },
         { code: 'de', label: 'DE', title: 'Deutsch', prefix: 'de/' },
-        { code: 'fr', label: 'FR', title: 'FranÃ§ais', prefix: 'fr/' },
+        { code: 'fr', label: 'FR', title: 'Français', prefix: 'fr/' },
     ];
 
     return languages.map((lang) => {
@@ -259,13 +259,13 @@ function buildLanguageSwitcher() {
 }
 
 // `rootPrefix` is leeg op de NL-pagina's (root) en "../" op de
-// vertaalde pagina's (en/, de/, fr/) â€” zodat logo-paden kloppen.
+// vertaalde pagina's (en/, de/, fr/) — zodat logo-paden kloppen.
 const ROOT_PREFIX = currentLanguage() === 'nl' ? '' : '../';
 
 // ------------------------------------------------------------------
 // 6. buildHeader()
 // Bouwt de complete header: logo links, menu + taalknoppen rechts,
-// en een hamburger-knop voor mobiel. Wordt geÃ¯njecteerd in het
+// en een hamburger-knop voor mobiel. Wordt geïnjecteerd in het
 // lege <header class="site-header"></header>-element op elke pagina.
 // ------------------------------------------------------------------
 function buildHeader() {
@@ -315,7 +315,7 @@ function buildHeader() {
 // ------------------------------------------------------------------
 // 7. buildFooter()
 // Bouwt de footer in 3 kolommen: brand + socials | paginalinks | contact.
-// De social-icoontjes worden uit SOCIAL_LINKS gehaald. Wordt geÃ¯njecteerd
+// De social-icoontjes worden uit SOCIAL_LINKS gehaald. Wordt geïnjecteerd
 // in het lege <footer class="site-footer"></footer>-element op elke pagina.
 // ------------------------------------------------------------------
 function buildFooter() {
@@ -381,7 +381,7 @@ function buildSocialCards() {
 
     target.innerHTML = `<div class="card-grid">${SOCIAL_LINKS.map((social) => `
         <a href="${social.href}" target="_blank" rel="noopener" class="card" style="text-decoration: none;">
-            <div class="icon">ðŸ”—</div>
+            <div class="icon">🔗</div>
             <h3>${social.title}</h3>
         </a>
     `).join('')}</div>`;
@@ -443,9 +443,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // e. MOTION â€” scroll-reveal animaties
-    //    Om terug te draaien: verwijder dit hele blok Ã©n het MOTION-blok
-    //    in style.css (zoek daar naar "MOTION â€” om terug te draaien").
+    // e. MOTION — scroll-reveal animaties
+    //    Om terug te draaien: verwijder dit hele blok én het MOTION-blok
+    //    in style.css (zoek daar naar "MOTION — om terug te draaien").
     //
     //    Hoe het werkt:
     //    1. We zoeken alle elementen die zachtjes zichtbaar moeten worden
@@ -456,7 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //    3. Een IntersectionObserver kijkt wanneer zo'n element in beeld
     //       scrollt. Zodra dat gebeurt, krijgt het de class ".motion-visible"
     //       (waardoor het zachtjes zichtbaar wordt). Daarna stoppen we met
-    //       observeren, zodat het maar Ã©Ã©n keer gebeurt.
+    //       observeren, zodat het maar één keer gebeurt.
     const motionTargets = document.querySelectorAll(
         '.card-grid, .folder-grid, .steps, .contact-list, .cta-block'
     );

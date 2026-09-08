@@ -1,4 +1,4 @@
-﻿/* ==================================================================
+/* ==================================================================
    Mediaflow — Modern Light met diep groen
    ------------------------------------------------------------------
    Dit is HET centrale stylesheet voor de hele website (alle talen).
@@ -811,7 +811,7 @@ a {
 }
 
 .ba-handle::after {
-    content: "⇔";
+    content: "?";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1176,7 +1176,7 @@ a {
 /* ------------------------------------------------------------------
    15. RESPONSIVITEIT
    Layout aanpassing voor kleinere schermen:
-   - Max 960px: desktop-menu → hamburger, footer → 1 kolom
+   - Max 960px: desktop-menu ? hamburger, footer ? 1 kolom
    - Max 600px: secties/hero worden smaller
    ------------------------------------------------------------------ */
 
