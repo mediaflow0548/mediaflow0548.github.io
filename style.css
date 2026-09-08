@@ -1706,38 +1706,6 @@ a {
    Alles respecteert prefers-reduced-motion.
    ================================================================== */
 
-/* 1. CURSORTRAIL: zachte stip die de muis volgt */
-.cursor-dot {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(26, 92, 58, 0.55);
-    pointer-events: none;
-    z-index: 99999;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease;
-    opacity: 0;
-}
-
-.cursor-dot.visible {
-    opacity: 1;
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .cursor-dot {
-        display: block;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .cursor-dot {
-        display: none;
-    }
-}
-
 /* 2. KNOP-GLANS: lichtflits schuift over knoppen bij hover */
 .btn {
     position: relative;
