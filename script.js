@@ -380,9 +380,8 @@ function buildSocialCards() {
     if (!target) return;
 
     target.innerHTML = `<div class="card-grid">${SOCIAL_LINKS.map((social) => `
-        <a href="${social.href}" target="_blank" rel="noopener" class="card" style="text-decoration: none;">
-            <div class="icon">🔗</div>
-            <h3>${social.title}</h3>
+        <a href="${social.href}" target="_blank" rel="noopener" class="card social-card" style="text-decoration: none;">
+            <h3>${social.title}</h3><svg class="social-card-logo" viewBox="${social.viewBox}" aria-hidden="true"><path d="${social.path}"/></svg>
         </a>
     `).join('')}</div>`;
 }

@@ -1526,3 +1526,28 @@ a {
         transform: scale(1);
     }
 }
+
+/* Social card logos (contactpagina): naam links, platform-logo rechts */
+.social-card {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.social-card h3 {
+    margin: 0;
+}
+
+.social-card-logo {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    fill: #a99ab8;
+    transition: fill 0.2s ease, transform 0.2s ease;
+}
+
+.social-card:hover .social-card-logo {
+    fill: var(--green-700);
+    transform: scale(1.08);
+}
