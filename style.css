@@ -1551,3 +1551,55 @@ a {
     fill: var(--green-700);
     transform: scale(1.08);
 }
+/* Contactformulier (Web3Forms): velden in huisstijl */
+.contact-form {
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-row label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--green-900);
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+    font: inherit;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #ffffff;
+    color: inherit;
+}
+
+.form-row textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+    outline: 2px solid var(--green-700);
+    outline-offset: 2px;
+}
+
+.form-status {
+    margin: 8px 0 0;
+    font-size: 0.95rem;
+    color: var(--green-700);
+}
+
+.form-status.error {
+    color: #b3392e;
+}

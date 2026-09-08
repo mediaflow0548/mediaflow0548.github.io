@@ -1,26 +1,26 @@
 // ==================================================================
-// Mediaflow — script.js
+// Mediaflow â€” script.js
 // ------------------------------------------------------------------
 // Dit bestand bevat ALLE JavaScript voor de hele website (alle talen).
 // Elke pagina in /, /en/, /de/ en /fr/ laadt dit ene bestand.
 //
 // Opbouw (boven naar beneden):
-// 1. NAV_ITEMS      — lijst van alle pagina's (voor menu en footer)
-// 2. SOCIAL_LINKS   — social media-iconen (SVG-paden)
-// 3. currentPage()  — bepaalt op welke pagina we zijn
-// 4. currentLanguage() — bepaalt in welke taal we zijn (nl/en/de/fr)
-// 5. buildLanguageSwitcher() — bouwt de NL/EN/DE/FR knoppen
-// 6. buildHeader()  — bouwt de header met logo, menu en taalknoppen
-// 7. buildFooter()  — bouwt de footer met brand, socials en links
-// 8. buildSocialCards() — vult de social-kaarten op de contactpagina
-// 9. DOMContentLoaded — start alles op zodra de pagina is geladen:
+// 1. NAV_ITEMS      â€” lijst van alle pagina's (voor menu en footer)
+// 2. SOCIAL_LINKS   â€” social media-iconen (SVG-paden)
+// 3. currentPage()  â€” bepaalt op welke pagina we zijn
+// 4. currentLanguage() â€” bepaalt in welke taal we zijn (nl/en/de/fr)
+// 5. buildLanguageSwitcher() â€” bouwt de NL/EN/DE/FR knoppen
+// 6. buildHeader()  â€” bouwt de header met logo, menu en taalknoppen
+// 7. buildFooter()  â€” bouwt de footer met brand, socials en links
+// 8. buildSocialCards() â€” vult de social-kaarten op de contactpagina
+// 9. DOMContentLoaded â€” start alles op zodra de pagina is geladen:
 //    header/footer injecteren, hamburger, FAQ-accordion, motion
 // ==================================================================
 
 // ------------------------------------------------------------------
 // 1. NAV_ITEMS
 // De volgorde van alle pagina's. De labels (teksten) komen per taal
-// uit I18N hieronder — zo zijn menu en footer automatisch vertaald.
+// uit I18N hieronder â€” zo zijn menu en footer automatisch vertaald.
 // `cta: true` zorgt dat de "Contact"-link er als knop uit gaat zien.
 // Wil je een pagina toevoegen/verwijderen of hernoemen? Pas het hier,
 // dan past het automatisch overal.
@@ -62,7 +62,7 @@ const I18N = {
         certificate: 'Dronecertificaat A1/A3',
         privacy: 'Privacyverklaring',
         disclaimer: 'Disclaimer',
-        copyright: '© 2026 Mediaflow — Jaap Spakman',
+        copyright: 'Â© 2026 Mediaflow â€” Jaap Spakman',
     },
     en: {
         home: 'Home',
@@ -81,13 +81,13 @@ const I18N = {
         certificate: 'Drone certificate A1/A3',
         privacy: 'Privacy Policy',
         disclaimer: 'Disclaimer',
-        copyright: '© 2026 Mediaflow — Jaap Spakman',
+        copyright: 'Â© 2026 Mediaflow â€” Jaap Spakman',
     },
     de: {
         home: 'Start',
         diensten: 'Leistungen',
         portfolio: 'Portfolio',
-        overMij: 'Über mich',
+        overMij: 'Ãœber mich',
         tarieven: 'Preise',
         proces: 'Ablauf',
         faq: 'FAQ',
@@ -98,39 +98,39 @@ const I18N = {
         location: 'Holten, Overijssel',
         legalTitle: 'Rechtliches',
         certificate: 'Drohnenzertifikat A1/A3',
-        privacy: 'Datenschutzerklärung',
+        privacy: 'DatenschutzerklÃ¤rung',
         disclaimer: 'Haftungsausschluss',
-        copyright: '© 2026 Mediaflow — Jaap Spakman',
+        copyright: 'Â© 2026 Mediaflow â€” Jaap Spakman',
     },
     fr: {
         home: 'Accueil',
         diensten: 'Services',
         portfolio: 'Portfolio',
-        overMij: 'À propos',
+        overMij: 'Ã€ propos',
         tarieven: 'Tarifs',
         proces: 'Processus',
         faq: 'FAQ',
         contact: 'Contact',
         pagesTitle: 'Pages',
         contactTitle: 'Contact',
-        tagline: 'Vidéographie par drone & vidéos promotionnelles',
+        tagline: 'VidÃ©ographie par drone & vidÃ©os promotionnelles',
         location: 'Holten, Overijssel',
-        legalTitle: 'Mentions légales',
+        legalTitle: 'Mentions lÃ©gales',
         certificate: 'Certificat de drone A1/A3',
-        privacy: 'Politique de confidentialité',
+        privacy: 'Politique de confidentialitÃ©',
         disclaimer: 'Avertissement',
-        copyright: '© 2026 Mediaflow — Jaap Spakman',
+        copyright: 'Â© 2026 Mediaflow â€” Jaap Spakman',
     },
 };
 
 // ------------------------------------------------------------------
 // 2. SOCIAL_LINKS
 // Elk social-icoon bestaat uit:
-//   href     — de URL waar de link naartoe gaat
-//   title    — tooltip en label op de contactpagina
-//   viewBox  — het tekengebied van de SVG (elk icoon heeft eigen afmetingen,
+//   href     â€” de URL waar de link naartoe gaat
+//   title    â€” tooltip en label op de contactpagina
+//   viewBox  â€” het tekengebied van de SVG (elk icoon heeft eigen afmetingen,
 //              hierdoor worden iconen niet afgesneden of scheef gecentreerd)
-//   path     — de SVG-vorm zelf (een lange lijn van coördinaten die
+//   path     â€” de SVG-vorm zelf (een lange lijn van coÃ¶rdinaten die
 //              samen het icoontje tekent)
 // ------------------------------------------------------------------
 const SOCIAL_LINKS = [
@@ -170,7 +170,7 @@ const SOCIAL_LINKS = [
 // 2b. LANGUAGE_FLAGS
 // Kleine inline SVG-vlaggetjes per taal, handgetekend met rechthoeken.
 // Emoji-vlaggen worden niet op alle Windows-versies ondersteund, dus
-// tekenen we ze zelf — zo werkt het op elk apparaat/browser.
+// tekenen we ze zelf â€” zo werkt het op elk apparaat/browser.
 // Elke vlag is 20x14 px met een dunne rand (via CSS).
 // ------------------------------------------------------------------
 const LANGUAGE_FLAGS = {
@@ -217,8 +217,8 @@ function currentPage() {
 // ------------------------------------------------------------------
 // 4. currentLanguage()
 // Kijkt in welke map de pagina zich bevindt:
-//   /en/ → Engels, /de/ → Duits, /fr/ → Frans
-//   geen van deze → standaard Nederlands (de root)
+//   /en/ â†’ Engels, /de/ â†’ Duits, /fr/ â†’ Frans
+//   geen van deze â†’ standaard Nederlands (de root)
 // ------------------------------------------------------------------
 function currentLanguage() {
     const path = window.location.pathname;
@@ -233,7 +233,7 @@ function currentLanguage() {
 // Bouwt de NL/EN/DE/FR-knoppen in de header. De actieve taal wordt
 // een disabled button (niet klikbaar, gemarkeerd). De andere talen
 // worden links naar dezelfde pagina in de juiste map.
-// Bijv.: je staat op /en/faq.html en klikt DE → je gaat naar /de/faq.html.
+// Bijv.: je staat op /en/faq.html en klikt DE â†’ je gaat naar /de/faq.html.
 // ------------------------------------------------------------------
 function buildLanguageSwitcher() {
     const current = currentLanguage();
@@ -244,7 +244,7 @@ function buildLanguageSwitcher() {
         { code: 'nl', label: 'NL', title: 'Nederlands', prefix: '' },
         { code: 'en', label: 'EN', title: 'English', prefix: 'en/' },
         { code: 'de', label: 'DE', title: 'Deutsch', prefix: 'de/' },
-        { code: 'fr', label: 'FR', title: 'Français', prefix: 'fr/' },
+        { code: 'fr', label: 'FR', title: 'FranÃ§ais', prefix: 'fr/' },
     ];
 
     return languages.map((lang) => {
@@ -259,13 +259,13 @@ function buildLanguageSwitcher() {
 }
 
 // `rootPrefix` is leeg op de NL-pagina's (root) en "../" op de
-// vertaalde pagina's (en/, de/, fr/) — zodat logo-paden kloppen.
+// vertaalde pagina's (en/, de/, fr/) â€” zodat logo-paden kloppen.
 const ROOT_PREFIX = currentLanguage() === 'nl' ? '' : '../';
 
 // ------------------------------------------------------------------
 // 6. buildHeader()
 // Bouwt de complete header: logo links, menu + taalknoppen rechts,
-// en een hamburger-knop voor mobiel. Wordt geïnjecteerd in het
+// en een hamburger-knop voor mobiel. Wordt geÃ¯njecteerd in het
 // lege <header class="site-header"></header>-element op elke pagina.
 // ------------------------------------------------------------------
 function buildHeader() {
@@ -315,7 +315,7 @@ function buildHeader() {
 // ------------------------------------------------------------------
 // 7. buildFooter()
 // Bouwt de footer in 3 kolommen: brand + socials | paginalinks | contact.
-// De social-icoontjes worden uit SOCIAL_LINKS gehaald. Wordt geïnjecteerd
+// De social-icoontjes worden uit SOCIAL_LINKS gehaald. Wordt geÃ¯njecteerd
 // in het lege <footer class="site-footer"></footer>-element op elke pagina.
 // ------------------------------------------------------------------
 function buildFooter() {
@@ -416,6 +416,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Certificaat-lightbox initialiseren
     initCertificateLightbox();
 
+    // Contactformulier (Web3Forms) initialiseren
+    initContactForm();
+
     // Hamburger-menu openen/dichtklappen op mobiel
     // c. Hamburger-menu: klik toggelt het mobiele menu open/dicht
     //    en verandert het icoon van drie streepjes naar een kruisje
@@ -442,9 +445,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // e. MOTION — scroll-reveal animaties
-    //    Om terug te draaien: verwijder dit hele blok én het MOTION-blok
-    //    in style.css (zoek daar naar "MOTION — om terug te draaien").
+    // e. MOTION â€” scroll-reveal animaties
+    //    Om terug te draaien: verwijder dit hele blok Ã©n het MOTION-blok
+    //    in style.css (zoek daar naar "MOTION â€” om terug te draaien").
     //
     //    Hoe het werkt:
     //    1. We zoeken alle elementen die zachtjes zichtbaar moeten worden
@@ -455,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //    3. Een IntersectionObserver kijkt wanneer zo'n element in beeld
     //       scrollt. Zodra dat gebeurt, krijgt het de class ".motion-visible"
     //       (waardoor het zachtjes zichtbaar wordt). Daarna stoppen we met
-    //       observeren, zodat het maar één keer gebeurt.
+    //       observeren, zodat het maar Ã©Ã©n keer gebeurt.
     const motionTargets = document.querySelectorAll(
         '.card-grid, .folder-grid, .steps, .contact-list, .cta-block'
     );
@@ -541,7 +544,7 @@ function initCertificateLightbox() {
     const certificateButton = document.querySelector('.certificate-button');
     if (!certificateButton) return;
 
-    // Lightbox-element één keer aanmaken en aan de pagina toevoegen.
+    // Lightbox-element Ã©Ã©n keer aanmaken en aan de pagina toevoegen.
     const lightbox = document.createElement('div');
     lightbox.className = 'certificate-lightbox';
     lightbox.innerHTML = `
@@ -568,3 +571,51 @@ function initCertificateLightbox() {
     });
 }
 
+
+// ------------------------------------------------------------------
+// 11. CONTACTFORMULIER (Web3Forms)
+// Vangt het verzenden van het offerte-formulier af en stuurt het via
+// fetch naar Web3Forms. Zo blijft de bezoeker op de pagina en krijgen
+// we een nette succes- of foutmelding i.p.v. een doorverwijzing.
+// ------------------------------------------------------------------
+function initContactForm() {
+    const form = document.querySelector('.contact-form');
+    if (!form) return;
+
+    const status = form.querySelector('.form-status');
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (!status || !submitButton) return;
+
+        submitButton.disabled = true;
+        status.hidden = false;
+        status.classList.remove('error');
+
+        // Succes- en fouttekst worden per taal uit data-attributen gelezen.
+        const successText = form.dataset.success || 'Bedankt voor je bericht! Ik reageer zo snel mogelijk.';
+        const errorText = form.dataset.error || 'Er ging iets mis. Stuur me gerust een e-mail.';
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { Accept: 'application/json' }
+            });
+
+            if (response.ok) {
+                status.textContent = successText;
+                form.reset();
+            } else {
+                status.textContent = errorText;
+                status.classList.add('error');
+            }
+        } catch (error) {
+            status.textContent = errorText;
+            status.classList.add('error');
+        } finally {
+            submitButton.disabled = false;
+        }
+    });
+}

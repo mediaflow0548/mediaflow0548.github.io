@@ -55,6 +55,44 @@
         <a href="mailto:mediaflow0548@outlook.com?subject=Angebotsanfrage%20Mediaflow" class="btn btn-green">✉ E-Mail senden</a>
     </section>
 
+
+    <!-- ANGEBOTSFORMULAR: wird über Web3Forms an Jaaps E-Mail gesendet -->
+    <section class="section">
+        <div class="section">
+            <h2>Angebot anfragen</h2>
+            <p class="lead">Füllen Sie das Formular aus und ich antworte so schnell wie möglich — meistens innerhalb von 2 Tagen.</p>
+            <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" data-success="Danke für Ihre Nachricht! Ich antworte so schnell wie möglich." data-error="Etwas ist schiefgelaufen. Schreiben Sie mir gerne eine E-Mail.">
+                <input type="hidden" name="access_key" value="814db4e2-5080-4458-ba13-569442ebb37d">
+                <input type="hidden" name="subject" value="Neue Anfrage über die Website">
+                <div class="form-row">
+                    <label for="cf-name">Name *</label>
+                    <input type="text" id="cf-name" name="name" required>
+                </div>
+                <div class="form-row">
+                    <label for="cf-email">E-Mail-Adresse *</label>
+                    <input type="email" id="cf-email" name="email" required>
+                </div>
+                <div class="form-row">
+                    <label for="cf-type">Projektart</label>
+                    <select id="cf-type" name="project_type">
+                        <option>Drohnenvideo / FPV</option>
+                        <option>Luftfotografie</option>
+                        <option>Video-Produktion</option>
+                        <option>Geländefotografie</option>
+                        <option>Immobilienpräsentation</option>
+                        <option>Weiß ich noch nicht</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="cf-message">Nachricht *</label>
+                    <textarea id="cf-message" name="message" rows="5" required placeholder="Erzählen Sie kurz, wofür Ihr Video gedacht ist, den Ort und wann Sie es brauchen."></textarea>
+                </div>
+                <button type="submit" class="btn btn-green">Anfrage senden</button>
+                <p class="form-status" hidden></p>
+            </form>
+        </div>
+    </section>
+
     <section class="section soft">
         <div class="section">
             <h2>Oder finden Sie mich auf Social Media</h2>
