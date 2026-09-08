@@ -716,3 +716,18 @@ function initCursorTrail() {
     }
     animate();
 }
+
+// ------------------------------------------------------------------
+// 14. THUMBNAIL-FALLBACK
+// Als de HD-thumbnail (maxresdefault) niet bestaat, val automatisch
+// terug op de standaardkwaliteit zodat er geen kapotte beelden zijn.
+// ------------------------------------------------------------------
+function initThumbFallback() {
+    document.querySelectorAll('.video-thumb img').forEach((img) => {
+        img.addEventListener('error', () => {
+            if (img.src.includes('maxresdefault')) {
+                img.src = img.src.replace('maxresdefault', 'hqdefault');
+            }
+        });
+    });
+}
