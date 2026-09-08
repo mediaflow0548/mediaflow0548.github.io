@@ -1,26 +1,26 @@
 // ==================================================================
-// Mediaflow Ã¢â‚¬â€ script.js
+// Mediaflow ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â script.js
 // ------------------------------------------------------------------
 // Dit bestand bevat ALLE JavaScript voor de hele website (alle talen).
 // Elke pagina in /, /en/, /de/ en /fr/ laadt dit ene bestand.
 //
 // Opbouw (boven naar beneden):
-// 1. NAV_ITEMS      Ã¢â‚¬â€ lijst van alle pagina's (voor menu en footer)
-// 2. SOCIAL_LINKS   Ã¢â‚¬â€ social media-iconen (SVG-paden)
-// 3. currentPage()  Ã¢â‚¬â€ bepaalt op welke pagina we zijn
-// 4. currentLanguage() Ã¢â‚¬â€ bepaalt in welke taal we zijn (nl/en/de/fr)
-// 5. buildLanguageSwitcher() Ã¢â‚¬â€ bouwt de NL/EN/DE/FR knoppen
-// 6. buildHeader()  Ã¢â‚¬â€ bouwt de header met logo, menu en taalknoppen
-// 7. buildFooter()  Ã¢â‚¬â€ bouwt de footer met brand, socials en links
-// 8. buildSocialCards() Ã¢â‚¬â€ vult de social-kaarten op de contactpagina
-// 9. DOMContentLoaded Ã¢â‚¬â€ start alles op zodra de pagina is geladen:
+// 1. NAV_ITEMS      ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â lijst van alle pagina's (voor menu en footer)
+// 2. SOCIAL_LINKS   ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â social media-iconen (SVG-paden)
+// 3. currentPage()  ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â bepaalt op welke pagina we zijn
+// 4. currentLanguage() ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â bepaalt in welke taal we zijn (nl/en/de/fr)
+// 5. buildLanguageSwitcher() ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â bouwt de NL/EN/DE/FR knoppen
+// 6. buildHeader()  ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â bouwt de header met logo, menu en taalknoppen
+// 7. buildFooter()  ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â bouwt de footer met brand, socials en links
+// 8. buildSocialCards() ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â vult de social-kaarten op de contactpagina
+// 9. DOMContentLoaded ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â start alles op zodra de pagina is geladen:
 //    header/footer injecteren, hamburger, FAQ-accordion, motion
 // ==================================================================
 
 // ------------------------------------------------------------------
 // 1. NAV_ITEMS
 // De volgorde van alle pagina's. De labels (teksten) komen per taal
-// uit I18N hieronder Ã¢â‚¬â€ zo zijn menu en footer automatisch vertaald.
+// uit I18N hieronder ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â zo zijn menu en footer automatisch vertaald.
 // `cta: true` zorgt dat de "Contact"-link er als knop uit gaat zien.
 // Wil je een pagina toevoegen/verwijderen of hernoemen? Pas het hier,
 // dan past het automatisch overal.
@@ -62,7 +62,7 @@ const I18N = {
         certificate: 'Dronecertificaat A1/A3',
         privacy: 'Privacyverklaring',
         disclaimer: 'Disclaimer',
-        copyright: 'Ã‚Â© 2026 Mediaflow Ã¢â‚¬â€ Jaap Spakman',
+        copyright: 'Ãƒâ€šÃ‚Â© 2026 Mediaflow ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Jaap Spakman',
     },
     en: {
         home: 'Home',
@@ -81,13 +81,13 @@ const I18N = {
         certificate: 'Drone certificate A1/A3',
         privacy: 'Privacy Policy',
         disclaimer: 'Disclaimer',
-        copyright: 'Ã‚Â© 2026 Mediaflow Ã¢â‚¬â€ Jaap Spakman',
+        copyright: 'Ãƒâ€šÃ‚Â© 2026 Mediaflow ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Jaap Spakman',
     },
     de: {
         home: 'Start',
         diensten: 'Leistungen',
         portfolio: 'Portfolio',
-        overMij: 'ÃƒÅ“ber mich',
+        overMij: 'ÃƒÆ’Ã…â€œber mich',
         tarieven: 'Preise',
         proces: 'Ablauf',
         faq: 'FAQ',
@@ -98,39 +98,39 @@ const I18N = {
         location: 'Holten, Overijssel',
         legalTitle: 'Rechtliches',
         certificate: 'Drohnenzertifikat A1/A3',
-        privacy: 'DatenschutzerklÃƒÂ¤rung',
+        privacy: 'DatenschutzerklÃƒÆ’Ã‚Â¤rung',
         disclaimer: 'Haftungsausschluss',
-        copyright: 'Ã‚Â© 2026 Mediaflow Ã¢â‚¬â€ Jaap Spakman',
+        copyright: 'Ãƒâ€šÃ‚Â© 2026 Mediaflow ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Jaap Spakman',
     },
     fr: {
         home: 'Accueil',
         diensten: 'Services',
         portfolio: 'Portfolio',
-        overMij: 'Ãƒâ‚¬ propos',
+        overMij: 'ÃƒÆ’Ã¢â€šÂ¬ propos',
         tarieven: 'Tarifs',
         proces: 'Processus',
         faq: 'FAQ',
         contact: 'Contact',
         pagesTitle: 'Pages',
         contactTitle: 'Contact',
-        tagline: 'VidÃƒÂ©ographie par drone & vidÃƒÂ©os promotionnelles',
+        tagline: 'VidÃƒÆ’Ã‚Â©ographie par drone & vidÃƒÆ’Ã‚Â©os promotionnelles',
         location: 'Holten, Overijssel',
-        legalTitle: 'Mentions lÃƒÂ©gales',
+        legalTitle: 'Mentions lÃƒÆ’Ã‚Â©gales',
         certificate: 'Certificat de drone A1/A3',
-        privacy: 'Politique de confidentialitÃƒÂ©',
+        privacy: 'Politique de confidentialitÃƒÆ’Ã‚Â©',
         disclaimer: 'Avertissement',
-        copyright: 'Ã‚Â© 2026 Mediaflow Ã¢â‚¬â€ Jaap Spakman',
+        copyright: 'Ãƒâ€šÃ‚Â© 2026 Mediaflow ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Jaap Spakman',
     },
 };
 
 // ------------------------------------------------------------------
 // 2. SOCIAL_LINKS
 // Elk social-icoon bestaat uit:
-//   href     Ã¢â‚¬â€ de URL waar de link naartoe gaat
-//   title    Ã¢â‚¬â€ tooltip en label op de contactpagina
-//   viewBox  Ã¢â‚¬â€ het tekengebied van de SVG (elk icoon heeft eigen afmetingen,
+//   href     ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â de URL waar de link naartoe gaat
+//   title    ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â tooltip en label op de contactpagina
+//   viewBox  ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â het tekengebied van de SVG (elk icoon heeft eigen afmetingen,
 //              hierdoor worden iconen niet afgesneden of scheef gecentreerd)
-//   path     Ã¢â‚¬â€ de SVG-vorm zelf (een lange lijn van coÃƒÂ¶rdinaten die
+//   path     ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â de SVG-vorm zelf (een lange lijn van coÃƒÆ’Ã‚Â¶rdinaten die
 //              samen het icoontje tekent)
 // ------------------------------------------------------------------
 const SOCIAL_LINKS = [
@@ -170,7 +170,7 @@ const SOCIAL_LINKS = [
 // 2b. LANGUAGE_FLAGS
 // Kleine inline SVG-vlaggetjes per taal, handgetekend met rechthoeken.
 // Emoji-vlaggen worden niet op alle Windows-versies ondersteund, dus
-// tekenen we ze zelf Ã¢â‚¬â€ zo werkt het op elk apparaat/browser.
+// tekenen we ze zelf ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â zo werkt het op elk apparaat/browser.
 // Elke vlag is 20x14 px met een dunne rand (via CSS).
 // ------------------------------------------------------------------
 const LANGUAGE_FLAGS = {
@@ -217,8 +217,8 @@ function currentPage() {
 // ------------------------------------------------------------------
 // 4. currentLanguage()
 // Kijkt in welke map de pagina zich bevindt:
-//   /en/ Ã¢â€ â€™ Engels, /de/ Ã¢â€ â€™ Duits, /fr/ Ã¢â€ â€™ Frans
-//   geen van deze Ã¢â€ â€™ standaard Nederlands (de root)
+//   /en/ ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Engels, /de/ ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Duits, /fr/ ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Frans
+//   geen van deze ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ standaard Nederlands (de root)
 // ------------------------------------------------------------------
 function currentLanguage() {
     const path = window.location.pathname;
@@ -233,7 +233,7 @@ function currentLanguage() {
 // Bouwt de NL/EN/DE/FR-knoppen in de header. De actieve taal wordt
 // een disabled button (niet klikbaar, gemarkeerd). De andere talen
 // worden links naar dezelfde pagina in de juiste map.
-// Bijv.: je staat op /en/faq.html en klikt DE Ã¢â€ â€™ je gaat naar /de/faq.html.
+// Bijv.: je staat op /en/faq.html en klikt DE ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ je gaat naar /de/faq.html.
 // ------------------------------------------------------------------
 function buildLanguageSwitcher() {
     const current = currentLanguage();
@@ -244,7 +244,7 @@ function buildLanguageSwitcher() {
         { code: 'nl', label: 'NL', title: 'Nederlands', prefix: '' },
         { code: 'en', label: 'EN', title: 'English', prefix: 'en/' },
         { code: 'de', label: 'DE', title: 'Deutsch', prefix: 'de/' },
-        { code: 'fr', label: 'FR', title: 'FranÃƒÂ§ais', prefix: 'fr/' },
+        { code: 'fr', label: 'FR', title: 'FranÃƒÆ’Ã‚Â§ais', prefix: 'fr/' },
     ];
 
     return languages.map((lang) => {
@@ -259,13 +259,13 @@ function buildLanguageSwitcher() {
 }
 
 // `rootPrefix` is leeg op de NL-pagina's (root) en "../" op de
-// vertaalde pagina's (en/, de/, fr/) Ã¢â‚¬â€ zodat logo-paden kloppen.
+// vertaalde pagina's (en/, de/, fr/) ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â zodat logo-paden kloppen.
 const ROOT_PREFIX = currentLanguage() === 'nl' ? '' : '../';
 
 // ------------------------------------------------------------------
 // 6. buildHeader()
 // Bouwt de complete header: logo links, menu + taalknoppen rechts,
-// en een hamburger-knop voor mobiel. Wordt geÃƒÂ¯njecteerd in het
+// en een hamburger-knop voor mobiel. Wordt geÃƒÆ’Ã‚Â¯njecteerd in het
 // lege <header class="site-header"></header>-element op elke pagina.
 // ------------------------------------------------------------------
 function buildHeader() {
@@ -315,7 +315,7 @@ function buildHeader() {
 // ------------------------------------------------------------------
 // 7. buildFooter()
 // Bouwt de footer in 3 kolommen: brand + socials | paginalinks | contact.
-// De social-icoontjes worden uit SOCIAL_LINKS gehaald. Wordt geÃƒÂ¯njecteerd
+// De social-icoontjes worden uit SOCIAL_LINKS gehaald. Wordt geÃƒÆ’Ã‚Â¯njecteerd
 // in het lege <footer class="site-footer"></footer>-element op elke pagina.
 // ------------------------------------------------------------------
 function buildFooter() {
@@ -421,6 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Video-lightbox initialiseren
     initVideoLightbox();
+    initThumbFallback();
 
     // Hamburger-menu openen/dichtklappen op mobiel
     // c. Hamburger-menu: klik toggelt het mobiele menu open/dicht
@@ -448,9 +449,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // e. MOTION Ã¢â‚¬â€ scroll-reveal animaties
-    //    Om terug te draaien: verwijder dit hele blok ÃƒÂ©n het MOTION-blok
-    //    in style.css (zoek daar naar "MOTION Ã¢â‚¬â€ om terug te draaien").
+    // e. MOTION ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â scroll-reveal animaties
+    //    Om terug te draaien: verwijder dit hele blok ÃƒÆ’Ã‚Â©n het MOTION-blok
+    //    in style.css (zoek daar naar "MOTION ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â om terug te draaien").
     //
     //    Hoe het werkt:
     //    1. We zoeken alle elementen die zachtjes zichtbaar moeten worden
@@ -461,7 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //    3. Een IntersectionObserver kijkt wanneer zo'n element in beeld
     //       scrollt. Zodra dat gebeurt, krijgt het de class ".motion-visible"
     //       (waardoor het zachtjes zichtbaar wordt). Daarna stoppen we met
-    //       observeren, zodat het maar ÃƒÂ©ÃƒÂ©n keer gebeurt.
+    //       observeren, zodat het maar ÃƒÆ’Ã‚Â©ÃƒÆ’Ã‚Â©n keer gebeurt.
     const motionTargets = document.querySelectorAll(
         '.card-grid, .folder-grid, .steps, .contact-list, .cta-block'
     );
@@ -547,7 +548,7 @@ function initCertificateLightbox() {
     const certificateButton = document.querySelector('.certificate-button');
     if (!certificateButton) return;
 
-    // Lightbox-element ÃƒÂ©ÃƒÂ©n keer aanmaken en aan de pagina toevoegen.
+    // Lightbox-element ÃƒÆ’Ã‚Â©ÃƒÆ’Ã‚Â©n keer aanmaken en aan de pagina toevoegen.
     const lightbox = document.createElement('div');
     lightbox.className = 'certificate-lightbox';
     lightbox.innerHTML = `
@@ -626,7 +627,7 @@ function initContactForm() {
 // ------------------------------------------------------------------
 // 12. VIDEO-LIGHTBOX (portfolio)
 // Zet alle .video-thumb-knoppen om in een popup-speler. De YouTube-
-// iframe wordt pas geladen op het moment dat iemand klikt â€” dit maakt
+// iframe wordt pas geladen op het moment dat iemand klikt Ã¢â‚¬â€ dit maakt
 // de pagina sneller en rustiger.
 // ------------------------------------------------------------------
 function initVideoLightbox() {
@@ -654,7 +655,8 @@ function initVideoLightbox() {
     thumbs.forEach((thumb) => {
         thumb.addEventListener('click', () => {
             const videoId = thumb.dataset.videoId;
-            iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&vq=hd1080';
+            const startParam = thumb.dataset.start ? '&start=' + thumb.dataset.start : '';
+            iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&vq=hd1080' + startParam;
             lightbox.classList.add('open');
             document.body.style.overflow = 'hidden';
         });
