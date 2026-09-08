@@ -1700,3 +1700,176 @@ a {
 .video-lightbox .video-frame {
     margin: 0;
 }
+
+/* ==================================================================
+   WOW-ANIMATIES - cursortrail, micro-interacties en extra polish
+   Alles respecteert prefers-reduced-motion.
+   ================================================================== */
+
+/* 1. CURSORTRAIL: zachte stip die de muis volgt */
+.cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(26, 92, 58, 0.55);
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.cursor-dot.visible {
+    opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .cursor-dot {
+        display: block;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cursor-dot {
+        display: none;
+    }
+}
+
+/* 2. KNOP-GLANS: lichtflits schuift over knoppen bij hover */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+    pointer-events: none;
+}
+
+.btn:hover::after {
+    left: 130%;
+}
+
+/* 3. KAART-LIFT: diepere 3D-lift bij hover */
+.card:hover,
+.folder-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 18px 40px rgba(18, 61, 38, 0.16);
+}
+
+/* 4. ICON-BOUNCE: icoontjes dansen bij hover */
+.card .icon {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card:hover .icon {
+    transform: translateY(-4px) rotate(-6deg) scale(1.15);
+}
+
+/* 5. LINK-ONDERSTREEP: vult van links bij hover */
+.footer-pages a,
+.nav-desktop a:not(.nav-cta),
+.nav-mobile a:not(.nav-cta) {
+    position: relative;
+}
+
+.footer-pages a::after,
+.nav-desktop a:not(.nav-cta)::after,
+.nav-mobile a:not(.nav-cta)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.footer-pages a:hover::after,
+.nav-desktop a:not(.nav-cta):hover::after,
+.nav-mobile a:not(.nav-cta):hover::after {
+    transform: scaleX(1);
+}
+
+/* 6. FOTO-ZOOM: portfolio-fotos zoomen subtiel */
+.photo-img {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.photo-img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 30px rgba(18, 61, 38, 0.18);
+}
+
+/* 7. SOCIAL-ICONEN: draaien en schalen in footer */
+.social-row a svg {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.social-row a:hover svg {
+    transform: rotate(-10deg) scale(1.25);
+}
+
+/* 8. HERO-GRADIENT: langzaam levende achtergrond */
+@keyframes hero-drift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .hero {
+        background-size: 200% 200%;
+        animation: hero-drift 18s ease-in-out infinite;
+    }
+}
+
+/* 9. FAQ-ICON: plusje draait naar kruisje */
+.faq-icon {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.faq-item.open .faq-icon {
+    transform: rotate(135deg);
+}
+
+/* 10. FORMULIER-FOCUS: groene gloed om velden */
+.form-row input,
+.form-row select,
+.form-row textarea {
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+    border-color: var(--green-700);
+    box-shadow: 0 0 0 4px rgba(26, 92, 58, 0.12);
+    outline: none;
+}
+
+/* 11. PULSE-CTA: aanmeldblokken ademen zachtjes */
+@keyframes cta-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(26, 92, 58, 0.25); }
+    50% { box-shadow: 0 0 0 14px rgba(26, 92, 58, 0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .cta-block {
+        animation: cta-pulse 3s ease-in-out infinite;
+    }
+}
