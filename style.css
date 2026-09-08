@@ -1774,7 +1774,7 @@ a {
 }
 
 .card:hover .icon {
-    transform: translateY(-4px) rotate(-6deg) scale(1.15);
+    transform: translateY(-2px) scale(1.08);
 }
 
 /* 5. LINK-ONDERSTREEP: vult van links bij hover */
