@@ -1455,3 +1455,74 @@ a {
         animation-delay: 0.24s;
     }
 }
+
+/* ==================================================================
+   CERTIFICATE LIGHTBOX
+   Toont het dronecertificaat als grote afbeelding bovenop de pagina.
+   De achtergrond wordt donker en de afbeelding schaalt mee met het
+   scherm. Klikken sluit de lightbox weer.
+   ================================================================== */
+.certificate-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: #b9cfc0;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+.certificate-button:hover img {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.certificate-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.82);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    cursor: zoom-out;
+}
+
+.certificate-lightbox.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.certificate-lightbox-inner {
+    max-width: min(90vw, 900px);
+    max-height: 90vh;
+}
+
+.certificate-lightbox img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 12px;
+    background: #ffffff;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .certificate-lightbox-inner {
+        transform: scale(0.94);
+        transition: transform 0.25s ease;
+    }
+
+    .certificate-lightbox.open .certificate-lightbox-inner {
+        transform: scale(1);
+    }
+}
