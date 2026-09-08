@@ -1,0 +1,11 @@
+﻿# ==================================================================
+# Mediaflow - robots.txt
+# Vertelt zoekmachines wat ze mogen indexeren.
+# "Allow: /" betekent: de hele site mag gecrawld worden.
+# De locatie van de sitemap wordt ook doorgegeven.
+# ==================================================================
+
+User-agent: *
+Allow: /
+
+Sitemap: https://mediaflow.spakman.nl/sitemap.xml
