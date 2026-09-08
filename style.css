@@ -1603,3 +1603,100 @@ a {
 .form-status.error {
     color: #b3392e;
 }
+/* Video-lightbox (portfolio): thumbnails met afspeelknop, klik opent popup-speler */
+.video-thumb {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    background: #0f2e1d;
+}
+
+.video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.video-thumb:hover img {
+    transform: scale(1.04);
+}
+
+.video-thumb-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background: rgba(15, 46, 29, 0.35);
+    transition: background 0.2s ease;
+}
+
+.video-thumb-play::before {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.video-thumb-play::after {
+    content: "";
+    position: absolute;
+    left: calc(50% - 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    border-style: solid;
+    border-width: 12px 0 12px 20px;
+    border-color: transparent transparent transparent var(--green-900);
+}
+
+.video-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.88);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.video-lightbox.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.video-lightbox-inner {
+    position: relative;
+    width: min(92vw, 960px);
+}
+
+.video-lightbox-close {
+    position: absolute;
+    top: -44px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.video-lightbox .video-frame {
+    margin: 0;
+}
