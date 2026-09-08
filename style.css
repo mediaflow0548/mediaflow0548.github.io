@@ -1636,8 +1636,13 @@ a {
     align-items: center;
     justify-content: center;
     color: #ffffff;
-    background: rgba(15, 46, 29, 0.35);
+    background: rgba(15, 46, 29, 0.12);
     transition: background 0.2s ease;
+}
+
+/* Bij hover wordt de overlay iets donkerder voor duidelijkheid */
+.video-thumb:hover .video-thumb-play {
+    background: rgba(15, 46, 29, 0.28);
 }
 
 .video-thumb-play::before {
