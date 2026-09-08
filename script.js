@@ -360,7 +360,7 @@ function buildFooter() {
         <div class="footer-certificate">
             <h4>${t.certificate}</h4>
             <button type="button" class="certificate-button" aria-label="${t.certificate}">
-                <img src="${rootPrefix}assets/drone-certificaat.png" alt="Dronecertificaat A1/A3">
+                <img src="${rootPrefix}assets/drone-certificaat.jpg" alt="Dronecertificaat A1/A3">
                 <span>Bekijk certificaat</span>
             </button>
         </div>
@@ -547,7 +547,7 @@ function initCertificateLightbox() {
     lightbox.className = 'certificate-lightbox';
     lightbox.innerHTML = `
         <div class="certificate-lightbox-inner">
-            <img src="${ROOT_PREFIX}assets/drone-certificaat.png" alt="Dronecertificaat A1/A3">
+            <img src="${ROOT_PREFIX}assets/drone-certificaat.jpg" alt="Dronecertificaat A1/A3">
         </div>
     `;
     document.body.appendChild(lightbox);
