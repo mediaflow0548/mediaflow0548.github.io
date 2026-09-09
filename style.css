@@ -1323,6 +1323,12 @@ a {
 /* Alleen toepassen als de gebruiker GEEN "reduced motion" heeft ingesteld */
 @media (prefers-reduced-motion: no-preference) {
     /* Hero-elementen verschijnen bij het laden één voor één van onderaf */
+    /* De hero-foto krijgt geen fill-mode "both": die zou de hover-zoom
+       blijvend blokkeren omdat de animatie-transform blijft staan. */
+    .hero-inner > .hero-image {
+        animation: motion-fade-up 0.7s ease;
+    }
+
     .hero-inner > * {
         animation: motion-fade-up 0.7s ease both;
     }
