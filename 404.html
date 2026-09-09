@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- ==================================================================
+     Mediaflow - 404 (automatische taaldetectie)
+     ------------------------------------------------------------------
+     Deze pagina verschijnt als een bezoeker een verkeerde URL intypt.
+     De bezoeker wordt automatisch doorgestuurd naar de 404-pagina in
+     de juiste taal (NL/EN/DE/FR). Blijft deze pagina zichtbaar, dan
+     toont hij standaard de Nederlandse tekst.
+     ================================================================== -->
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina niet gevonden | Mediaflow</title>
+    <meta name="description" content="De opgevraagde pagina bestaat niet of is verplaatst. Ga terug naar de homepage van Mediaflow.">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <meta property="og:title" content="Pagina niet gevonden | Mediaflow">
+    <meta property="og:description" content="De opgevraagde pagina bestaat niet of is verplaatst. Ga terug naar de homepage van Mediaflow.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Mediaflow">
+    <meta property="og:image" content="https://mediaflow.spakman.nl/assets/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+    <header class="site-header"></header>
+    <main class="error-page">
+        <h1>404</h1>
+        <p>Deze pagina bestaat niet of is verplaatst.</p>
+        <a href="index.html" class="btn btn-primary">Terug naar home</a>
+    </main>
+    <footer class="site-footer"></footer>
+
+    <!-- Automatische taaldetectie voor de 404-pagina -->
+    <script>
+    (function () {
+        // Wacht tot de browser de taalinstelling en de huidige URL kent.
+        function detectLanguage() {
+            // 1. Check of de bezochte URL al in een taalmap zat (bijv. /en/abc).
+            var path = window.location.pathname;
+            if (path.indexOf('/en/') !== -1) return 'en';
+            if (path.indexOf('/de/') !== -1) return 'de';
+            if (path.indexOf('/fr/') !== -1) return 'fr';
+
+            // 2. Geen taalmap gevonden? Kijk dan naar de browserinstelling.
+            var lang = (navigator.language || 'nl').toLowerCase();
+            if (lang.indexOf('en') === 0) return 'en';
+            if (lang.indexOf('de') === 0) return 'de';
+            if (lang.indexOf('fr') === 0) return 'fr';
+            return 'nl';
+        }
+
+        // Stuur door naar de juiste taalversie, behalve als we al in de root zitten (NL).
+        var lang = detectLanguage();
+        if (lang !== 'nl') {
+            window.location.replace('/' + lang + '/404.html');
+        }
+    })();
+    </script>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

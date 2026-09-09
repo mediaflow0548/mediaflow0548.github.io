@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- ==================================================================
+     Mediaflow — Contact (Nederlands)
+     ------------------------------------------------------------------
+     Contactinformatie (e-mail, telefoon, locatie), social media-kaarten
+     en een CTA-blok om een offerte aan te vragen.
+     ================================================================== -->
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Mediaflow</title>
+    <meta name="description" content="Neem contact op met Mediaflow — Jaap Spakman. E-mail, telefoon of social media. Gevestigd in Holten, Overijssel.">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="canonical" href="https://mediaflow.spakman.nl/contact.html">
+    <link rel="alternate" hreflang="nl" href="https://mediaflow.spakman.nl/contact.html">
+    <link rel="alternate" hreflang="en-GB" href="https://mediaflow.spakman.nl/en/contact.html">
+    <link rel="alternate" hreflang="de-DE" href="https://mediaflow.spakman.nl/de/contact.html">
+    <link rel="alternate" hreflang="fr-FR" href="https://mediaflow.spakman.nl/fr/contact.html">
+    <link rel="alternate" hreflang="x-default" href="https://mediaflow.spakman.nl/contact.html">
+    <meta property="og:title" content="Contact | Mediaflow">
+    <meta property="og:description" content="Neem contact op met Mediaflow — Jaap Spakman. E-mail, telefoon of social media. Gevestigd in Holten, Overijssel.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mediaflow.spakman.nl/contact.html">
+    <meta property="og:site_name" content="Mediaflow">
+    <meta property="og:image" content="https://mediaflow.spakman.nl/assets/og/contact.jpg">
+    <meta property="og:locale" content="nl_NL">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact | Mediaflow">
+    <meta name="twitter:description" content="Neem contact op met Mediaflow — Jaap Spakman. E-mail, telefoon of social media. Gevestigd in Holten, Overijssel.">
+    <meta name="twitter:image" content="https://mediaflow.spakman.nl/assets/og/contact.jpg">
+</head>
+<body>
+    <!-- Lege header — wordt gevuld door script.js -->
+    <header class="site-header"></header>
+
+    <!-- HERO -->
+    <section class="hero small">
+        <div class="hero-inner">
+            <h1>Contact</h1>
+            <p>Bel, mail of stuur een bericht — ik reageer meestal binnen een paar uur.</p>
+        </div>
+    </section>
+
+    <!-- CONTACTLIJST: e-mail, telefoon en locatie (locatie linkt naar Google Maps) -->
+    <section class="section">
+        <div class="contact-layout">
+            <div class="contact-info">
+                <h2>Neem contact op</h2>
+                <p class="lead">Vertel me kort wat je zoekt, dan hoor je snel van me. Je hoeft nooit te aarzelen — of het nu om een grote opdracht gaat, een kleine vraag of gewoon even wat achtergrondinformatie: je mag me altijd mailen of een berichtje sturen, over alles wat met beelden te maken heeft (en eigenlijk ook daarbuiten).</p>
+                <ul class="contact-list">
+            <li>
+                <span class="label">E-mail</span>
+                <a href="mailto:mediaflow0548@outlook.com">mediaflow0548@outlook.com</a>
+            </li>
+            <li>
+                <span class="label">Telefoon</span>
+                <a href="tel:+31618643610">+31 6 18643610</a>
+            </li>
+            <li>
+                <span class="label">Locatie</span>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=Holten%2C+Overijssel" target="_blank" rel="noopener">Holten, Overijssel</a>
+            </li>
+        </ul>
+                <a href="mailto:mediaflow0548@outlook.com?subject=Offerte%20aanvragen%20Mediaflow" class="btn btn-green">✉ Stuur een e-mail</a>
+            </div>
+            <img src="assets/portfolio/vakantie/straat-in-bergen.jpg" alt="Straat in de bergen" class="contact-image" loading="lazy">
+        </div>
+    </section>
+
+
+    <!-- OFFERTE-FORMULIER: verstuurt via Web3Forms naar de e-mail van Jaap -->
+    <section class="section">
+        <div class="quote-form-layout">
+            <h2>Offerte aanvragen</h2>
+            <p class="lead">Vul het formulier in en ik reageer meestal binnen 24 uur.</p>
+            <form class="contact-form contact-form-centered" action="https://api.web3forms.com/submit" method="POST" data-success="Bedankt voor je bericht! Ik reageer meestal binnen 24 uur." data-error="Er ging iets mis. Stuur me gerust een e-mail.">
+                <input type="hidden" name="access_key" value="814db4e2-5080-4458-ba13-569442ebb37d">
+                <input type="hidden" name="subject" value="Nieuwe aanvraag via website">
+                <div class="form-row">
+                    <label for="cf-name">Naam *</label>
+                    <input type="text" id="cf-name" name="name" required>
+                </div>
+                <div class="form-row">
+                    <label for="cf-email">E-mailadres *</label>
+                    <input type="email" id="cf-email" name="email" required>
+                </div>
+                <div class="form-row">
+                    <label for="cf-type">Type project</label>
+                    <select id="cf-type" name="project_type">
+                        <option>Dronevideo / FPV</option>
+                        <option>Luchtfotografie</option>
+                        <option>Video-productie</option>
+                        <option>Terreinfotografie</option>
+                        <option>Vastgoedpresentatie</option>
+                        <option>Weet ik nog niet</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="cf-message">Bericht *</label>
+                    <textarea id="cf-message" name="message" rows="5" required placeholder="Vertel kort waar je video voor bedoeld is, de locatie en wanneer je aan wilt leveren."></textarea>
+                </div>
+                <button type="submit" class="btn btn-green">Verstuur aanvraag</button>
+                <p class="form-status" hidden></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- SOCIAL MEDIA: kaarten worden hier ingevuld door buildSocialCards() -->
+    <section class="section soft">
+        <div class="section">
+            <h2>Of vind me op social media</h2>
+            <p class="lead">Ik post regelmatig nieuwe beelden en projecten.</p>
+            <div id="social-contact"></div>
+        </div>
+    </section>
+
+    <!-- CTA-BLOK: directe mailto-link voor een offerte-aanvraag -->
+    <section class="section">
+        <div class="cta-block">
+            <h2>Zullen we je project plannen?</h2>
+            <p>De eerste stap is simpel: een berichtje sturen.</p>
+            <a href="mailto:mediaflow0548@outlook.com?subject=Offerte%20aanvragen%20Mediaflow" class="btn btn-primary">Vraag een offerte via e-mail</a>
+        </div>
+    </section>
+
+    <!-- Lege footer — wordt gevuld door script.js -->
+    <footer class="site-footer"></footer>
+    <script src="script.js"></script>
+</body>
+</html>

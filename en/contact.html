@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Mediaflow</title>
+    <meta name="description" content="Contact Mediaflow — Jaap Spakman. Email, phone or social media. Located in Holten, Overijssel.">
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="canonical" href="https://mediaflow.spakman.nl/en/contact.html">
+    <link rel="alternate" hreflang="nl" href="https://mediaflow.spakman.nl/contact.html">
+    <link rel="alternate" hreflang="en-GB" href="https://mediaflow.spakman.nl/en/contact.html">
+    <link rel="alternate" hreflang="de-DE" href="https://mediaflow.spakman.nl/de/contact.html">
+    <link rel="alternate" hreflang="fr-FR" href="https://mediaflow.spakman.nl/fr/contact.html">
+    <link rel="alternate" hreflang="x-default" href="https://mediaflow.spakman.nl/contact.html">
+    <meta property="og:title" content="Contact | Mediaflow">
+    <meta property="og:description" content="Contact Mediaflow — Jaap Spakman. Email, phone or social media. Located in Holten, Overijssel.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mediaflow.spakman.nl/en/contact.html">
+    <meta property="og:site_name" content="Mediaflow">
+    <meta property="og:image" content="https://mediaflow.spakman.nl/assets/og/contact.jpg">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact | Mediaflow">
+    <meta name="twitter:description" content="Contact Mediaflow — Jaap Spakman. Email, phone or social media. Located in Holten, Overijssel.">
+    <meta name="twitter:image" content="https://mediaflow.spakman.nl/assets/og/contact.jpg">
+</head>
+<body>
+    <header class="site-header"></header>
+
+    <section class="hero small">
+        <div class="hero-inner">
+            <h1>Contact</h1>
+            <p>Call, email or send a message — I usually respond within a few hours.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="contact-layout">
+            <div class="contact-info">
+                <h2>Get in touch</h2>
+        <p class="lead">Tell me briefly what you're looking for, and you'll hear from me soon. Never hesitate — whether it's a big assignment, a small question or just some background info: feel free to email or message me at any time, about anything related to footage (and honestly, even beyond that).</p>
+        <ul class="contact-list">
+            <li>
+                <span class="label">Email</span>
+                <a href="mailto:mediaflow0548@outlook.com">mediaflow0548@outlook.com</a>
+            </li>
+            <li>
+                <span class="label">Phone</span>
+                <a href="tel:+31618643610">+31 6 18643610</a>
+            </li>
+            <li>
+                <span class="label">Location</span>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=Holten%2C+Overijssel" target="_blank" rel="noopener">Holten, Overijssel</a>
+            </li>
+        </ul>
+        <a href="mailto:mediaflow0548@outlook.com?subject=Quote%20request%20Mediaflow" class="btn btn-green">✉ Send an email</a>
+            </div>
+        </div>
+        <img src="../assets/portfolio/vakantie/straat-in-bergen.jpg" alt="Street in the mountains" class="contact-image" loading="lazy">
+    </section>
+
+
+    <!-- QUOTE FORM: sends via Web3Forms to Jaap's email -->
+    <section class="section">
+        <div class="section">
+            <h2>Request a quote</h2>
+            <p class="lead">Fill in the form and I'll usually reply within 24 hours.</p>
+            <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" data-success="Thanks for your message! I usually reply within 24 hours." data-error="Something went wrong. Feel free to send me an email.">
+                <input type="hidden" name="access_key" value="814db4e2-5080-4458-ba13-569442ebb37d">
+                <input type="hidden" name="subject" value="New request via website">
+                <div class="form-row">
+                    <label for="cf-name">Name *</label>
+                    <input type="text" id="cf-name" name="name" required>
+                </div>
+                <div class="form-row">
+                    <label for="cf-email">Email address *</label>
+                    <input type="email" id="cf-email" name="email" required>
+                </div>
+                <div class="form-row">
+                    <label for="cf-type">Project type</label>
+                    <select id="cf-type" name="project_type">
+                        <option>Drone video / FPV</option>
+                        <option>Aerial photography</option>
+                        <option>Video production</option>
+                        <option>Site photography</option>
+                        <option>Real estate presentation</option>
+                        <option>Not sure yet</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="cf-message">Message *</label>
+                    <textarea id="cf-message" name="message" rows="5" required placeholder="Briefly tell me what your video is for, the location and when you need it."></textarea>
+                </div>
+                <button type="submit" class="btn btn-green">Send request</button>
+                <p class="form-status" hidden></p>
+            </form>
+        </div>
+    </section>
+
+    <section class="section soft">
+        <div class="section">
+            <h2>Or find me on social media</h2>
+            <p class="lead">I regularly post new footage and projects.</p>
+            <div id="social-contact"></div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="cta-block">
+            <h2>Shall we plan your project?</h2>
+            <p>The first step is simple: send a message.</p>
+            <a href="mailto:mediaflow0548@outlook.com?subject=Quote%20request%20Mediaflow" class="btn btn-primary">Request a quote via email</a>
+        </div>
+    </section>
+
+    <footer class="site-footer"></footer>
+    <script src="../script.js"></script>
+</body>
+</html>

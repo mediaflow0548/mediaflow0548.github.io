@@ -1,111 +1,1942 @@
-/* Dynamische, cinematische styling voor Mediaflow */
+/* ==================================================================
+   Mediaflow — Modern Light met diep groen
+   ------------------------------------------------------------------
+   Dit is HET centrale stylesheet voor de hele website (alle talen).
+   Elke pagina in /, /en/, /de/ en /fr/ gebruikt dit ene bestand.
+
+   Opbouw (boven naar beneden):
+   1. CSS-variabelen (kleuren/afmetingen)
+   2. Basisopmaak
+   3. Header en navigatie
+   4. Hero
+   5. Knoppen
+   6. Secties
+   7. Kaarten
+   8. Portfolio-folders
+   9. Video- en fotoblokken
+   10. Proces-stappen
+   11. FAQ-accordion
+   12. Contactpagina
+   13. Call-to-action blokken
+   14. Footer
+   15. Responsiviteit
+   16. Motion/animaties (onderaan, gemarkeerd om terug te draaien)
+   ================================================================== */
+
+/* ------------------------------------------------------------------
+   1. CSS-VARIABELEN
+   Alle kleuren en afmetingen die op meerdere plekken worden gebruikt.
+   Wijzig je hier iets, dan verandert het op de hele website mee.
+   ------------------------------------------------------------------ */
+
+:root {
+    /* Donker groen — koppen (h2/h3) en donkere achtergronden */
+    --green-900: #123d26;
+
+    /* Middel groen — hoofdkleur voor knoppen, actieve links, iconen */
+    --green-700: #1a5c3a;
+
+    /* Licht groen — subtiele hover-achtergrond */
+    --green-100: #e6f2ea;
+
+    /* Wit — standaard achtergrond */
+    --bg: #ffffff;
+
+    /* Licht grijsgroen — zachte achtergrond voor afwisselende secties */
+    --bg-soft: #f5f8f6;
+
+    /* Donkergrijs — standaard tekstkleur */
+    --text: #1f2937;
+
+    /* Grijsgroen — tekst die iets op de achtergrond mag staan */
+    --text-muted: #5b6b63;
+
+    /* Lichtgrijs — dunne scheidingslijnen en randen */
+    --border: #e3eae5;
+
+    /* Afgeronde hoeken bij kaarten, knoppen en blokken */
+    --radius: 14px;
+
+    /* Maximale breedte van de inhoud (voorkomt te brede tekst) */
+    --max-width: 1100px;
+}
+
+/* ------------------------------------------------------------------
+   2. BASISOPMAAK
+   Globale instellingen die op de hele pagina gelden.
+   ------------------------------------------------------------------ */
+
+/* Reset: alle browsers maken elementen op dezelfde manier op */
+* {
+    box-sizing: border-box;
+}
+
+/* Standaard lettertype, achtergrond en tekstkleur voor de hele pagina */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(-45deg, #0b0f12, #1a232a, #070a0c, #111b21);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    color: #ffffff;
+    background: var(--bg);
+    color: var(--text);
     margin: 0;
+    line-height: 1.7;
+}
+
+/* Afbeeldingen nooit breder dan hun container */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Standaard kleur voor alle links */
+a {
+    color: var(--green-700);
+}
+
+/* ------------------------------------------------------------------
+   3. HEADER EN NAVIGATIE
+   Balk bovenaan met logo, menu en taalknoppen.
+   ------------------------------------------------------------------ */
+
+/* ===== Header en navigatie ===== */
+/* De header blijft bovenaan plakken bij het scrollen (sticky) */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+}
+
+/* Binnenkant header: logo links, menu rechts */
+.header-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 8px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Logo + tekst "Mediaflow" linksboven */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* Het woord "flow" krijgt een groene kleur (logo-accent) */
+.brand .brand-flow {
+    color: var(--green-700);
+}
+
+/* Rond logo-afbeelding */
+.brand img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+/* Desktopmenu: horizontale rij met links */
+.nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Elke individuele menu-link */
+.nav-desktop a {
+    text-decoration: none;
+    color: var(--text);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Hover-effect: zachte groene achtergrond */
+.nav-desktop a:hover {
+    background: var(--green-100);
+    color: var(--green-900);
+}
+
+/* De pagina waar je nu bent krijgt een gemarkeerde kleur */
+.nav-desktop a.active {
+    color: var(--green-700);
+    font-weight: 600;
+}
+
+/* "Contact"-knop valt extra op (groene achtergrond) */
+.nav-desktop a.nav-cta {
+    background: var(--green-700);
+    color: #ffffff;
+    margin-left: 8px;
+}
+
+.nav-desktop a.nav-cta:hover {
+    background: var(--green-900);
+    color: #ffffff;
+}
+
+/* Taalknoppen: NL, EN, DE, FR */
+.lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+}
+
+/* Elke taalknop (actieve taal is button, andere zijn links) */
+.lang-switch button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border: 1px solid var(--border);
+    background: #ffffff;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    padding: 3px 7px;
+    line-height: 1;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+/* De knop van de taal waarin je je nu bevindt (gemarkeerd) */
+.lang-switch button.active {
+    background: #ffffff;
+    border-color: var(--green-700);
+    color: var(--green-900);
+    font-weight: 600;
+}
+
+.lang-switch button:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
+.lang-switch a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border: 1px solid var(--border);
+    background: #ffffff;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    padding: 3px 7px;
+    line-height: 1;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* SVG-vlaggetje in de taalknop (inline getekend, werkt op elk systeem) */
+.lang-flag {
+    width: 16px;
+    height: 11px;
+    border-radius: 3px;
+    outline: 1px solid rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+}
+
+.lang-switch a:hover {
+    background: var(--green-100);
+    border-color: var(--green-700);
+    color: var(--green-900);
+}
+
+/* Hamburger-menu voor mobiel: standaard verborgen */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+/* De drie streepjes van het hamburger-icoon */
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    margin: 5px 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Als het menu open is: streepjes worden een kruisje */
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Uitgeklapt mobiel menu (verschijnt na klik op hamburger) */
+.nav-mobile {
+    display: none;
+    flex-direction: column;
+    padding: 8px 24px 20px;
+    border-top: 1px solid var(--border);
+}
+
+/* Verberg standaard, toon alleen als ".open" is gezet door JS */
+.nav-mobile.open {
+    display: flex;
+}
+
+/* Elke link in het mobiele menu */
+.nav-mobile a {
+    text-decoration: none;
+    color: var(--text);
+    padding: 12px 4px;
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
+}
+
+/* Laatste link hoeft geen onderstreping */
+.nav-mobile a:last-child {
+    border-bottom: none;
+}
+
+/* "Contact"-link in mobiele menu valt extra op */
+.nav-mobile a.nav-cta {
+    color: var(--green-700);
+    font-weight: 600;
+}
+
+/* ------------------------------------------------------------------
+   4. HERO
+   Grote openingssectie bovenaan elke pagina.
+   Homepage heeft een donkergroene gradient-achtergrond.
+   ------------------------------------------------------------------ */
+
+/* ===== Hero (grote openingssectie bovenaan elke pagina) ===== */
+.hero {
+    position: relative;
+    background:
+        linear-gradient(120deg, rgba(18, 61, 38, 0.85), rgba(31, 107, 65, 0.55)),
+        radial-gradient(circle at 70% 20%, #2c7a4f 0%, transparent 50%),
+        #0f2e1d;
+    color: #ffffff;
+    padding: 72px 24px 60px;
+}
+
+/* Binnenkant van de hero: tekst links, foto rechts op desktop */
+.hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 440px);
+    align-items: center;
+    gap: 48px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.hero-content {
+    min-width: 0;
+}
+
+.hero-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover-animatie op de hero-foto, zelfde stijl als portfolio-fotos */
+.hero-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(18, 61, 38, 0.18);
+}
+
+/* Grote titel — schaalt automatisch mee met het scherm */
+.hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1.15;
+    margin: 0 0 18px;
+    max-width: 720px;
+}
+
+/* Uitlegtekst onder de titel */
+.hero p {
+    font-size: 1rem;
+    max-width: 560px;
+    margin: 0 0 20px;
+    color: #d9e7de;
+}
+
+/* Rij met knoppen in de hero */
+.hero .btn-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* Kleinere variant — gebruikt op subpagina's */
+.hero.small {
+    padding: 56px 24px 48px;
+}
+
+.hero.small h1 {
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+}
+
+/* ------------------------------------------------------------------
+   5. KNOPPEN
+   Drie varianten: wit (btn-primary), omlijnd (btn-outline) en
+   groen (btn-green). Alle drie hebben een lichte lift bij hover.
+   ------------------------------------------------------------------ */
+
+/* ===== Knoppen ===== */
+/* Basisstijl voor ALLE knoppen */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+/* Witte knop op donkere achtergrond */
+.btn-primary {
+    background: #ffffff;
+    color: var(--green-900);
+}
+
+.btn-primary:hover {
+    background: var(--green-100);
+    transform: translateY(-2px);
+}
+
+/* Omlijnde knop met doorzichtige achtergrond */
+.btn-outline {
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    color: #ffffff;
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+}
+
+/* Groene knop (bijv. "Stuur een e-mail") */
+.btn-green {
+    background: var(--green-700);
+    color: #ffffff;
+}
+
+.btn-green:hover {
+    background: var(--green-900);
+    transform: translateY(-2px);
+}
+
+/* ------------------------------------------------------------------
+   6. SECTIES
+   Grote blokken content. ".section.soft" heeft een zachte
+   achtergrond, zodat pagina's visueel afwisselen tussen wit/groen.
+   ------------------------------------------------------------------ */
+
+/* ===== Secties en inhoudsblokken ===== */
+.section {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 56px 24px;
+}
+
+/* Zachte variant: licht grijsgroene achtergrond */
+.section.soft {
+    max-width: none;
+    background: var(--bg-soft);
+}
+
+/* Compacte fotoreeks zonder kop: minder ruimte boven en onder */
+.section.photo-teaser {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+/* Grote kop (h2) binnen een sectie */
+.section h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin: 0 0 12px;
+    color: var(--green-900);
+}
+
+/* Iets compactere ruimte tussen grote secties */
+.section + .section {
+    padding-top: 40px;
+}
+
+/* Uitlegtekst (lead) onder een h2-kop */
+.section .lead {
+    color: var(--text-muted);
+    max-width: 640px;
+    margin: 0 0 40px;
+    font-size: 1.05rem;
+}
+
+/* ------------------------------------------------------------------
+   7. KAARTEN (CARD-GRID)
+   Witte blokken met icoon, titel en uitleg — gebruikt op bijna
+   elke pagina (diensten, over mij, contact, etc.).
+   ------------------------------------------------------------------ */
+
+/* ===== Kaarten (diensten, over mij, social media, etc.) ===== */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+/* Elke individuele kaart */
+.card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover-effect: kaart komt iets omhoog met schaduw */
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(18, 61, 38, 0.08);
+}
+
+/* Icoon bovenin de kaart */
+.card .icon {
+    font-size: 1.8rem;
+    margin-bottom: 14px;
+}
+
+/* Titel van de kaart */
+.card h3 {
+    margin: 0 0 8px;
+    font-size: 1.15rem;
+    color: var(--green-900);
+}
+
+/* Uitlegtekst in de kaart */
+.card p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ------------------------------------------------------------------
+   8. PORTFOLIO-FOLDERS
+   Klikbare "mappen" op de homepage die doorlinken naar projecten.
+   ------------------------------------------------------------------ */
+
+/* ===== Portfolio-folders op de homepage ===== */
+.folder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+/* Elke individuele folder (klikbare link) */
+.folder-card {
+    display: block;
+    text-decoration: none;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover-effect op de folder */
+.folder-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(18, 61, 38, 0.1);
+}
+
+/* De emoji/thumb bovenin de folder */
+.folder-thumb {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, var(--green-700), var(--green-900));
+}
+
+/* Foto-thumb in projectkaarten: vult de bovenkant van de kaart */
+.folder-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Hover-verschuiving werkt nu op de hele afbeelding in plaats van alleen het emoji-vlak */
+.folder-card:hover .folder-thumb img {
+    transform: translateY(-4px) scale(1.05);
+}
+
+/* Tekstblok in de folder */
+.folder-info {
+    padding: 20px;
+}
+
+.folder-info h3 {
+    margin: 0 0 6px;
+    color: var(--green-900);
+    font-size: 1.1rem;
+}
+
+.folder-info p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ------------------------------------------------------------------
+   9. VIDEO- EN FOTOBLOKKEN (PORTFOLIO)
+   YouTube-video's en foto-placeholders op de portfolio-pagina.
+   ------------------------------------------------------------------ */
+
+/* ===== Video- en fotoblokken (portfolio) ===== */
+.video-frame {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+/* YouTube-iframe vult de hele video-frame */
+.video-frame iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.video-grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.video-with-photo {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 24px;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.video-photo-wrapper {
+    position: relative;
+    min-height: 100%;
+}
+
+/* Foto rechts van de video: vult de wrapper volledig en wordt netjes afgesneden. */
+.video-photo-wrapper .video-side-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 25%;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover-animatie op de foto naast de video */
+.video-photo-wrapper .video-side-photo:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(18, 61, 38, 0.18);
+}
+
+/* Placeholder als er nog geen video-ID is ingevuld */
+.video-placeholder {
+    position: absolute;
+    inset: 0;
+    border: 2px dashed var(--border);
+    background: var(--bg-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 12px;
+}
+
+/* Grid voor foto's naast elkaar */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+}
+
+/* Placeholder voor een foto die nog moet worden toegevoegd */
+.photo-placeholder {
+    height: 200px;
+    border-radius: 12px;
+    bo    background: var(--bg-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 12px;
+}
+
+/* Echte foto's in de portfolio-grid */
+.photo-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(18, 61, 38, 0.12);
+}
+
+/* ------------------------------------------------------------------
+   10. PROCES-STAPPEN
+   Genummerde kaarten op de procespagina (stap 1 t/m 5).
+   Nummers worden automatisch gegenereerd met CSS-counters.
+   ------------------------------------------------------------------ */
+
+/* ===== Proces-stappen (genummerde blokken) ===== */
+.steps {
+    counter-reset: step;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* Elke individuele stap-kaart */
+.step {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    counter-increment: step;
+}
+
+/* Het ronde nummer bovenin elke stap (CSS-counter) */
+.step::before {
+    content: counter(step);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--green-700);
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+/* Titel van de stap */
+.step h3 {
+    margin: 0 0 8px;
+    color: var(--green-900);
+}
+
+/* Uitlegtekst van de stap */
+.step p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ===== Before/after scroll-slider (dienstenpagina) =====
+   Twee foto's liggen op elkaar: "after" als basis, "before" als
+   afdekking waarvan de breedte animet. Beweeg de muis over het beeld
+   en de slider volgt soepel mee. Werkt ook met touch. */
+.ba-slider {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(18, 61, 38, 0.15);
+    cursor: ew-resize;
+    user-select: none;
+    touch-action: pan-y;
+}
+
+.ba-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+/* De "before"-laag: breedte wordt via JS ingesteld (0-100%) */
+.ba-before-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+    will-change: width;
+}
+
+.ba-before-wrap .ba-img {
+    /* Zorg dat de before-foto exact even groot blijft als het frame,
+       ongeacht de breedte van de wrap */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: 100%;
+    max-width: none;
+}
+
+/* Verticale scheidingslijn + ronde greep in het midden */
+.ba-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 3px;
+    height: 100%;
+    background: #ffffff;
+    transform: translateX(-50%);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+}
+
+.ba-handle::after {
+    content: "↔";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: var(--green-900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* Labels "Voor" en "Na" in de hoeken */
+.ba-label {
+    position: absolute;
+    top: 16px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.ba-label-left {
+    left: 16px;
+}
+
+.ba-label-right {
+    right: 16px;
+}
+
+/* Compactere sectie rondom de before/after-slider */
+.section.ba-section {
+    padding: 48px 24px;
+}
+
+.section.ba-section .section {
     padding: 0;
+}
+
+/* Sectie direct naar de before/after-slider ook wat compacter */
+.section.ba-section + .section {
+    padding-top: 48px;
+}
+
+/* ------------------------------------------------------------------
+   11. FAQ-ACCORDION
+   Vragen die je open en dicht kunt klikken. Plus/kruis-icoon wordt
+   getekend met CSS (perfect gecentreerd). JS zet de class ".open".
+   ------------------------------------------------------------------ */
+
+/* ===== FAQ-accordion (vouw vragen open/dicht) ===== */
+.faq-item {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+}
+
+/* Hover-effect op een FAQ-vraag */
+.faq-item:hover {
+    border-color: var(--green-700);
+}
+
+.faq-item h3 {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+    color: var(--green-900);
+}
+
+/* De vraag zelf (een <button> zodat je erop kunt klikken) */
+.faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 20px 24px;
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--green-900);
+    text-align: left;
+    cursor: pointer;
+}
+
+/* Het ronde plus-icoon rechts van de vraag (getekend met ::before/::after) */
+.faq-icon {
+    flex-shrink: 0;
+    position: relative;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--green-100);
+    color: var(--green-700);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: currentColor;
+}
+
+/* De horizontale streep van het plusje */
+.faq-icon::before {
+    width: 12px;
+    height: 2px;
+    transform: translate(-50%, -50%);
+}
+
+/* De verticale streep van het plusje */
+.faq-icon::after {
+    width: 2px;
+    height: 12px;
+    transform: translate(-50%, -50%);
+}
+
+/* Als de vraag open is: plusje draait 45° en wordt kruisje */
+.faq-item.open .faq-icon {
+    background: var(--green-700);
+    transform: rotate(45deg);
+}
+
+.faq-item.open .faq-icon::before,
+.faq-item.open .faq-icon::after {
+    background: #ffffff;
+}
+
+/* Antwoordblok: standaard verborgen, verschijnt bij ".open" */
+.faq-answer {
+    display: none;
+    padding: 0 24px 20px;
+}
+
+/* Toon het antwoord alleen als de vraag open is */
+.faq-item.open .faq-answer {
+    display: block;
+}
+
+/* Uitlegtekst in het antwoord */
+.faq-answer p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Links binnen een antwoord (bijv. naar contactpagina) */
+.faq-answer a {
+    color: var(--green-700);
+    text-decoration: underline;
+}
+
+.faq-item p {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+/* ------------------------------------------------------------------
+   12. CONTACTPAGINA
+   Lijst met e-mail, telefoon en locatie op eigen regels.
+   ------------------------------------------------------------------ */
+
+/* Contactpagina: contactgegevens links, sfeerfoto rechts */
+.contact-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+    align-items: center;
+    gap: 48px;
+}
+
+.contact-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover-animatie op de contactpagina-foto */
+.contact-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(18, 61, 38, 0.18);
+}
+
+@media (max-width: 600px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-image {
+        order: -1;
+        aspect-ratio: 16 / 10;
+        border-radius: 18px;
+    }
+}
+
+/* ===== Contactpagina ===== */
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    display: grid;
+    gap: 14px;
+}
+
+/* Elke regel in de contactlijst (label + waarde) */
+.contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.05rem;
+}
+
+/* Het label links ("E-mail", "Telefoon", "Locatie") */
+.contact-list .label {
+    color: var(--text-muted);
+    min-width: 110px;
+    font-size: 0.9rem;
+}
+
+/* ------------------------------------------------------------------
+   13. CALL-TO-ACTION BLOKKEN
+   Grote donkergroene blokken onderaan bijna elke pagina,
+   met een gradient-achtergrond voor diepte.
+   ------------------------------------------------------------------ */
+
+/* ===== Grote call-to-action blokken ===== */
+.cta-block {
+    background: linear-gradient(120deg, var(--green-900), var(--green-700));
+    color: #ffffff;
+    border-radius: var(--radius);
+    padding: 56px 40px;
+    text-align: center;
+}
+
+/* Titel in het CTA-blok */
+.cta-block h2 {
+    margin: 0 0 12px;
+    color: #ffffff;
+}
+
+/* Uitlegtekst in het CTA-blok */
+.cta-block p {
+    color: #d9e7de;
+    margin: 0 0 28px;
+}
+
+/* ------------------------------------------------------------------
+   14. FOOTER
+   Donkergroene balk onderaan met brand, socials, links, contact.
+   ------------------------------------------------------------------ */
+
+/* ===== Footer (onderaan elke pagina) ===== */
+.site-footer {
+    background: #0d291a;
+    color: #b9cfc0;
+    padding: 60px 24px 30px;
+    margin-top: 80px;
+}
+
+/* Binnenkant footer in 4 kolommen */
+.footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1.1fr 0.9fr;
+    gap: 40px;
+}
+
+.footer-pages {
+    margin-left: 40px;
+}
+
+.footer-legal {
+    margin-top: 0;
+}
+
+/* Kolomkoppen in de footer ("Pagina's", "Contact") */
+.site-footer h4 {
+    color: #ffffff;
+    margin: 0 0 14px;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Links in de footer */
+.site-footer a {
+    color: #b9cfc0;
+    text-decoration: none;
+    display: block;
+    padding: 4px 0;
+    font-size: 0.92rem;
+}
+
+.site-footer a:hover {
+    color: #ffffff;
+}
+
+/* Logo + merknaam in de footer */
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+/* Logo-afbeelding in de footer */
+.footer-brand img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
+/* Merknaam "Mediaflow" in de footer */
+.footer-brand strong {
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+/* Woord "flow" in footer-logo (groene accent) */
+.footer-brand .brand-flow {
+    color: #7fc79e;
+}
+
+/* Slogan onder het footer-logo */
+.footer-tagline {
+    color: #b9cfc0;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Rij met social media-icoontjes */
+.social-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+/* Elke social-icoon-knop (vierkant met afgeronde hoeken) */
+.social-row a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
+}
+
+/* SVG-icoon binnen de knop, perfect gecentreerd */
+.social-row a svg {
+    display: block;
+    margin: auto;
+}
+
+/* Hover-effect op social-icoon */
+.social-row a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* De SVG-paden zelf (LinkedIn, Instagram, YouTube, TikTok, Facebook) */
+.social-row svg {
+    width: 18px;
+    height: 18px;
+    fill: #ffffff;
+}
+
+/* Onderste balk van de footer met copyright */
+.footer-bottom {
+    max-width: var(--max-width);
+    margin: 20px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: #8fa89a;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* ------------------------------------------------------------------
+   15. RESPONSIVITEIT
+   Layout aanpassing voor kleinere schermen:
+   - Max 960px: desktop-menu ? hamburger, footer ? 1 kolom
+   - Max 600px: secties/hero worden smaller
+   ------------------------------------------------------------------ */
+
+/* ===== Responsiviteit (tablet en mobiel) ===== */
+@media (max-width: 960px) {
+    .nav-desktop {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .footer-inner {
+        gap: 28px;
+    }
+
+    .footer-pages {
+        margin-left: 0;
+    }
+
+    .footer-legal {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-image {
+        order: -1;
+        aspect-ratio: 16 / 10;
+        border-radius: 18px;
+    }
+
+    .section {
+        padding: 40px 20px;
+    }
+
+    .hero {
+        padding: 80px 20px 70px;
+    }
+
+    .cta-block {
+        padding: 44px 24px;
+    }
+
+    .video-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .video-grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .video-with-photo {
+        grid-template-columns: 1fr;
+    }
+
+    .video-side-photo {
+        position: static;
+        width: 100%;
+        height: 240px;
+    }
+}
+
+/* ------------------------------------------------------------------
+   16. MOTION / ANIMATIES
+   Subtiele animaties die bij het scrollen en hoveren verschijnen.
+   Om alles terug te draaien: verwijder dit hele blok (tot
+   "EINDE MOTION") en het motion-blok in script.js.
+   ------------------------------------------------------------------ */
+
+/* ===== MOTION — om terug te draaien: dit blok verwijderen ===== */
+/* Alleen toepassen als de gebruiker GEEN "reduced motion" heeft ingesteld */
+@media (prefers-reduced-motion: no-preference) {
+    /* Hero-elementen verschijnen bij het laden één voor één van onderaf */
+    /* De hero-foto krijgt geen fill-mode "both": die zou de hover-zoom
+       blijvend blokkeren omdat de animatie-transform blijft staan. */
+    .hero-inner > .hero-image {
+        animation: motion-fade-up 0.7s ease;
+    }
+
+    .hero-inner > * {
+        animation: motion-fade-up 0.7s ease both;
+    }
+
+    .hero-inner > *:nth-child(2) {
+        animation-delay: 0.15s;
+    }
+
+    .hero-inner > *:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    /* Elementen die zachtjes zichtbaar worden bij het scrollen */
+    .motion-reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    /* De status als een element zichtbaar is geworden */
+    .motion-reveal.motion-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Groene CTA-blokken krijgen een eigen pop-in-animatie */
+    .cta-block.motion-reveal {
+        opacity: 0;
+        transform: scale(0.92);
+        transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Eindstatus van de CTA pop-in */
+    .cta-block.motion-reveal.motion-visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* Iconen komen iets omhoog en worden iets groter bij hover */
+    .card:hover .icon,
+    .folder-card:hover .folder-thumb img,
+    .step:hover::before {
+        transform: translateY(-4px) scale(1.1);
+    }
+
+    .card .icon,
+    .folder-card .folder-thumb img,
+    .step::before {
+        transition: transform 0.25s ease;
+    }
+
+    /* Knoppen krijgen een glans-sweep bij hover */
+    .btn {
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* De glans-streep die over de knop schuift */
+    .btn::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.25) 50%, transparent 70%);
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+        pointer-events: none;
+    }
+
+    /* De glans beweegt bij hover over de knop */
+    .btn:hover::after {
+        transform: translateX(100%);
+    }
+
+    /* Header schuift bij het laden van boven naar beneden */
+    .site-header {
+        animation: motion-slide-down 0.5s ease both;
+    }
+
+    /* CTA-blokken krijgen een lichte lift bij hover */
+    .cta-block {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cta-block:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 40px rgba(18, 61, 38, 0.1);
+    }
+}
+
+/* Animatie: element verschijnt van onderaf en wordt zichtbaar */
+@keyframes motion-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animatie: element verschijnt van bovenaf en wordt zichtbaar */
+@keyframes motion-slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ===== EINDE MOTION ===== */
+
+/* Certificaat-badge in de footer */
+.footer-certificate {
+    max-width: var(--max-width);
+    margin: 20px auto 0;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-certificate h4 {
+    color: #ffffff;
+    margin: 0 0 12px;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-certificate a {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: #b9cfc0;
+}
+
+.footer-certificate img {
+    width: 72px;
+    height: auto;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 6px;
+    box-sizing: content-box;
+}
+
+.footer-certificate a:hover img {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.footer-certificate span {
+    font-size: 0.88rem;
+}
+
+.footer-certificate a:hover span {
+    color: #ffffff;
+}
+
+/* ==================================================================
+   404 ERROR PAGE
+   Simpele gecentreerde foutpagina met dezelfde huisstijl als de
+   rest van de site. De animatie is subtiel en valt automatisch weg
+   als een bezoeker "reduced motion" heeft ingesteld.
+   ================================================================== */
+.error-page {
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    gap: 12px;
+    padding: 6rem 1rem;
     text-align: center;
+}
+
+.error-page h1 {
+    font-size: clamp(4rem, 12vw, 8rem);
+    line-height: 1;
+    margin: 0;
+    color: var(--green-700);
+}
+
+.error-page p {
+    max-width: 420px;
+    margin: 0;
+    color: #4b5563;
+}
+
+.error-page .btn {
+    margin-top: 12px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .error-page > * {
+        animation: motion-fade-up 0.7s ease both;
+    }
+
+    .error-page > *:nth-child(2) {
+        animation-delay: 0.12s;
+    }
+
+    .error-page > *:nth-child(3) {
+        animation-delay: 0.24s;
+    }
+}
+
+/* ==================================================================
+   CERTIFICATE LIGHTBOX
+   Toont het dronecertificaat als grote afbeelding bovenop de pagina.
+   De achtergrond wordt donker en de afbeelding schaalt mee met het
+   scherm. Klikken sluit de lightbox weer.
+   ================================================================== */
+.certificate-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: #b9cfc0;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+.certificate-button:hover img {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.certificate-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.82);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    cursor: zoom-out;
+}
+
+.certificate-lightbox.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.certificate-lightbox-inner {
+    max-width: min(90vw, 900px);
+    max-height: 90vh;
+}
+
+.certificate-lightbox img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 12px;
+    background: #ffffff;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .certificate-lightbox-inner {
+        transform: scale(0.94);
+        transition: transform 0.25s ease;
+    }
+
+    .certificate-lightbox.open .certificate-lightbox-inner {
+        transform: scale(1);
+    }
+}
+
+/* Social card logos (contactpagina): naam links, platform-logo rechts */
+.social-card {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.social-card h3 {
+    margin: 0;
+}
+
+.social-card-logo {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    fill: #a99ab8;
+    transition: fill 0.2s ease, transform 0.2s ease;
+}
+
+.social-card:hover .social-card-logo {
+    fill: var(--green-700);
+    transform: scale(1.08);
+}
+/* Offerte-formulier centraal op de contactpagina */
+.quote-form-layout {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+/* Contactformulier (Web3Forms): velden in huisstijl */
+.contact-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-row label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--green-900);
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+    font: inherit;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #ffffff;
+    color: inherit;
+}
+
+.form-row textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+    outline: 2px solid var(--green-700);
+    outline-offset: 2px;
+}
+
+.form-status {
+    margin: 8px 0 0;
+    font-size: 0.95rem;
+    color: var(--green-700);
+}
+
+.form-status.error {
+    color: #b3392e;
+}
+/* Video-lightbox (portfolio): thumbnails met afspeelknop, klik opent popup-speler */
+.video-thumb {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    background: #0f2e1d;
+}
+
+.video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s ease;
+}
+
+.video-thumb:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.08);
+}
+
+/* Afspeelknop krijgt zachte lichtgloed zodat hij beter uitspringt */
+.video-thumb-play::before {
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.video-thumb:hover .video-thumb-play::before {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 24px 4px rgba(255, 255, 255, 0.45);
+}
+
+.video-thumb-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    font-size: 0;
+    background: transparent;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
+}
+
+.video-thumb-play::before {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.video-thumb-play::after {
+    content: "";
+    position: absolute;
+    left: calc(50% - 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    border-style: solid;
+    border-width: 12px 0 12px 20px;
+    border-color: transparent transparent transparent var(--green-900);
+}
+
+.video-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.88);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.video-lightbox.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.video-lightbox-inner {
+    position: relative;
+    width: min(92vw, 960px);
+}
+
+.video-lightbox-close {
+    position: absolute;
+    top: -44px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.video-lightbox .video-frame {
+    margin: 0;
+}
+
+/* ==================================================================
+   WOW-ANIMATIES - cursortrail, micro-interacties en extra polish
+   Alles respecteert prefers-reduced-motion.
+   ================================================================== */
+
+/* 2. KNOP-GLANS: lichtflits schuift over knoppen bij hover */
+.btn {
+    position: relative;
     overflow: hidden;
 }
 
-@keyframes gradientBG {
+.btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+    pointer-events: none;
+}
+
+.btn:hover::after {
+    left: 130%;
+}
+
+/* 3. KAART-LIFT: diepere 3D-lift bij hover */
+.card:hover,
+.folder-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 18px 40px rgba(18, 61, 38, 0.16);
+}
+
+/* 4. ICON-BOUNCE: icoontjes dansen bij hover */
+.card .icon {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card:hover .icon {
+    transform: translateY(-2px) scale(1.08);
+}
+
+/* 5. LINK-ONDERSTREEP: vult van links bij hover */
+.footer-pages a,
+.nav-desktop a:not(.nav-cta),
+.nav-mobile a:not(.nav-cta) {
+    position: relative;
+}
+
+.footer-pages a::after,
+.nav-desktop a:not(.nav-cta)::after,
+.nav-mobile a:not(.nav-cta)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.footer-pages a:hover::after,
+.nav-desktop a:not(.nav-cta):hover::after,
+.nav-mobile a:not(.nav-cta):hover::after {
+    transform: scaleX(1);
+}
+
+/* 6. FOTO-ZOOM: portfolio-fotos zoomen subtiel */
+.photo-img {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.photo-img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 30px rgba(18, 61, 38, 0.18);
+}
+
+/* 7. SOCIAL-ICONEN: draaien en schalen in footer */
+.social-row a svg {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.social-row a:hover svg {
+    transform: rotate(-10deg) scale(1.25);
+}
+
+/* 8. HERO-GRADIENT: langzaam levende achtergrond */
+@keyframes hero-drift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-.container {
-    max-width: 650px;
-    padding: 30px;
-    z-index: 1;
+@media (prefers-reduced-motion: no-preference) {
+    .hero {
+        background-size: 200% 200%;
+        animation: hero-drift 18s ease-in-out infinite;
+    }
 }
 
-h1 {
-    font-size: 4rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-    color: #00a884; 
-    letter-spacing: 2px;
-    text-shadow: 0 0 20px rgba(0, 168, 132, 0.2);
+/* 9. FAQ-ICON: plusje draait naar kruisje */
+.faq-icon {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-p {
-    font-size: 1.25rem;
-    color: #cfd8dc;
-    margin-bottom: 40px;
-    line-height: 1.7;
+.faq-item.open .faq-icon {
+    transform: rotate(135deg);
 }
 
-.btn {
-    display: inline-block;
-    background-color: #00a884;
-    color: white;
-    padding: 15px 35px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 168, 132, 0.3);
+/* 10. FORMULIER-FOCUS: groene gloed om velden */
+.form-row input,
+.form-row select,
+.form-row textarea {
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.btn:hover {
-    background-color: #008f72;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 168, 132, 0.5);
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+    border-color: var(--green-700);
+    box-shadow: 0 0 0 4px rgba(26, 92, 58, 0.12);
+    outline: none;
 }
 
-/* Social media balk vastgezet onderaan */
-.social-links {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    z-index: 2;
+/* 11. PULSE-CTA: aanmeldblokken ademen zachtjes */
+@keyframes cta-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(26, 92, 58, 0.25); }
+    50% { box-shadow: 0 0 0 14px rgba(26, 92, 58, 0); }
 }
 
-.social-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(22, 31, 38, 0.8); 
-    border-radius: 10px;
-    text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+@media (prefers-reduced-motion: no-preference) {
+    .cta-block {
+        animation: cta-pulse 3s ease-in-out infinite;
+    }
 }
-
-/* Zorgt dat de logo's perfect passen en standaard strak wit zijn */
-.social-icon svg {
-    width: 22px;
-    height: 22px;
-    fill: #ffffff;
-    transition: fill 0.3s ease;
-}
-
-/* Effect bij hover */
-.social-icon:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-}
-
-/* Unieke app-kleuren bij hover */
-.social-icon.linkedin:hover { background-color: #0077b5; }
-.social-icon.instagram:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-.social-icon.facebook:hover { background-color: #1877f2; }
-.social-icon.tiktok:hover { background-color: #000000; border-color: #ee1d52; }
-.social-icon.youtube:hover { background-color: #ff0000; }
