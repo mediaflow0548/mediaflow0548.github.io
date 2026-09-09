@@ -1635,7 +1635,8 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ffffff;
+    color: transparent;
+    font-size: 0;
     background: transparent;
     transition: background 0.2s ease;
 }
