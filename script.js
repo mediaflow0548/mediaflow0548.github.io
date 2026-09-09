@@ -349,7 +349,7 @@ function buildFooter() {
                 <h4>${t.contactTitle}</h4>
                 <a href="mailto:mediaflow0548@outlook.com">mediaflow0548@outlook.com</a>
                 <a href="tel:+31618643610">+31 6 18643610</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Holten%2C+Overijssel" target="_blank" rel="noopener">${t.location}</a>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=Holten%2C+Overijssel" target="_blank" rel="noopener">${t.location}</a>
             </div>
             <div class="footer-legal">
                 <h4>${t.legalTitle}</h4>
