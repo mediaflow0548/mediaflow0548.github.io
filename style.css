@@ -1622,7 +1622,7 @@ a {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s ease;
 }
 
 .video-thumb:hover img {
