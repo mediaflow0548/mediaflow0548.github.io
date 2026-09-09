@@ -1632,7 +1632,7 @@ a {
 
 /* Afspeelknop schaalt mee met de zoom van de thumbnail */
 .video-thumb-play {
-    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .video-thumb:hover .video-thumb-play {
@@ -1641,7 +1641,7 @@ a {
 
 /* Afspeelknop krijgt zachte lichtgloed zodat hij beter uitspringt */
 .video-thumb-play::before {
-    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.7s ease;
 }
 
 .video-thumb:hover .video-thumb-play::before {
