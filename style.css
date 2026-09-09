@@ -329,13 +329,13 @@ a {
         radial-gradient(circle at 70% 20%, #2c7a4f 0%, transparent 50%),
         #0f2e1d;
     color: #ffffff;
-    padding: 72px 24px 72px;
+    padding: 72px 24px 60px;
 }
 
 /* Binnenkant van de hero: tekst links, foto rechts op desktop */
 .hero-inner {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 480px);
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 440px);
     align-items: center;
     gap: 48px;
     max-width: var(--max-width);
