@@ -353,6 +353,13 @@ a {
     border-radius: 24px;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
     border: 1px solid rgba(255, 255, 255, 0.16);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover-animatie op de hero-foto, zelfde stijl als portfolio-fotos */
+.hero-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(18, 61, 38, 0.18);
 }
 
 /* Grote titel â€” schaalt automatisch mee met het scherm */
@@ -664,6 +671,13 @@ a {
     object-position: 50% 25%;
     border-radius: var(--radius);
     border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover-animatie op de foto naast de video */
+.video-photo-wrapper .video-side-photo:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(18, 61, 38, 0.18);
 }
 
 /* Placeholder als er nog geen video-ID is ingevuld */
@@ -1019,6 +1033,13 @@ a {
     object-fit: cover;
     border-radius: 24px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover-animatie op de contactpagina-foto */
+.contact-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(18, 61, 38, 0.18);
 }
 
 @media (max-width: 600px) {
