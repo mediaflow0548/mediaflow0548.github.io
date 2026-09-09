@@ -1,5 +1,5 @@
 /* ==================================================================
-   Mediaflow â€” Modern Light met diep groen
+   Mediaflow — Modern Light met diep groen
    ------------------------------------------------------------------
    Dit is HET centrale stylesheet voor de hele website (alle talen).
    Elke pagina in /, /en/, /de/ en /fr/ gebruikt dit ene bestand.
@@ -30,28 +30,28 @@
    ------------------------------------------------------------------ */
 
 :root {
-    /* Donker groen â€” koppen (h2/h3) en donkere achtergronden */
+    /* Donker groen — koppen (h2/h3) en donkere achtergronden */
     --green-900: #123d26;
 
-    /* Middel groen â€” hoofdkleur voor knoppen, actieve links, iconen */
+    /* Middel groen — hoofdkleur voor knoppen, actieve links, iconen */
     --green-700: #1a5c3a;
 
-    /* Licht groen â€” subtiele hover-achtergrond */
+    /* Licht groen — subtiele hover-achtergrond */
     --green-100: #e6f2ea;
 
-    /* Wit â€” standaard achtergrond */
+    /* Wit — standaard achtergrond */
     --bg: #ffffff;
 
-    /* Licht grijsgroen â€” zachte achtergrond voor afwisselende secties */
+    /* Licht grijsgroen — zachte achtergrond voor afwisselende secties */
     --bg-soft: #f5f8f6;
 
-    /* Donkergrijs â€” standaard tekstkleur */
+    /* Donkergrijs — standaard tekstkleur */
     --text: #1f2937;
 
-    /* Grijsgroen â€” tekst die iets op de achtergrond mag staan */
+    /* Grijsgroen — tekst die iets op de achtergrond mag staan */
     --text-muted: #5b6b63;
 
-    /* Lichtgrijs â€” dunne scheidingslijnen en randen */
+    /* Lichtgrijs — dunne scheidingslijnen en randen */
     --border: #e3eae5;
 
     /* Afgeronde hoeken bij kaarten, knoppen en blokken */
@@ -362,7 +362,7 @@ a {
     box-shadow: 0 12px 30px rgba(18, 61, 38, 0.18);
 }
 
-/* Grote titel â€” schaalt automatisch mee met het scherm */
+/* Grote titel — schaalt automatisch mee met het scherm */
 .hero h1 {
     font-size: clamp(2.2rem, 5vw, 3.4rem);
     line-height: 1.15;
@@ -385,7 +385,7 @@ a {
     flex-wrap: wrap;
 }
 
-/* Kleinere variant â€” gebruikt op subpagina's */
+/* Kleinere variant — gebruikt op subpagina's */
 .hero.small {
     padding: 56px 24px 48px;
 }
@@ -492,7 +492,7 @@ a {
 
 /* ------------------------------------------------------------------
    7. KAARTEN (CARD-GRID)
-   Witte blokken met icoon, titel en uitleg â€” gebruikt op bijna
+   Witte blokken met icoon, titel en uitleg — gebruikt op bijna
    elke pagina (diensten, over mij, contact, etc.).
    ------------------------------------------------------------------ */
 
@@ -889,7 +889,7 @@ a {
     padding: 0;
 }
 
-/* Sectie direct nÃ¡Ã¡r de before/after-slider ook wat compacter */
+/* Sectie direct naar de before/after-slider ook wat compacter */
 .section.ba-section + .section {
     padding-top: 48px;
 }
@@ -974,7 +974,7 @@ a {
     transform: translate(-50%, -50%);
 }
 
-/* Als de vraag open is: plusje draait 45Â° en wordt kruisje */
+/* Als de vraag open is: plusje draait 45° en wordt kruisje */
 .faq-item.open .faq-icon {
     background: var(--green-700);
     transform: rotate(45deg);
@@ -1319,10 +1319,10 @@ a {
    "EINDE MOTION") en het motion-blok in script.js.
    ------------------------------------------------------------------ */
 
-/* ===== MOTION â€” om terug te draaien: dit blok verwijderen ===== */
+/* ===== MOTION — om terug te draaien: dit blok verwijderen ===== */
 /* Alleen toepassen als de gebruiker GEEN "reduced motion" heeft ingesteld */
 @media (prefers-reduced-motion: no-preference) {
-    /* Hero-elementen verschijnen bij het laden Ã©Ã©n voor Ã©Ã©n van onderaf */
+    /* Hero-elementen verschijnen bij het laden één voor één van onderaf */
     .hero-inner > * {
         animation: motion-fade-up 0.7s ease both;
     }
