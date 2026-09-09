@@ -1626,7 +1626,22 @@ a {
 }
 
 .video-thumb:hover img {
-    transform: scale(1.04);
+    transform: scale(1.05);
+    filter: brightness(1.08);
+}
+
+/* Afspeelknop schaalt mee met de zoom van de thumbnail */
+.video-thumb:hover .video-thumb-play {
+    transform: scale(1.08);
+}
+
+/* Afspeelknop krijgt zachte lichtgloed zodat hij beter uitspringt */
+.video-thumb-play::before {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-thumb:hover .video-thumb-play::before {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 24px 4px rgba(255, 255, 255, 0.45);
 }
 
 .video-thumb-play {
