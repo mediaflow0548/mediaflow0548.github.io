@@ -1,5 +1,5 @@
 /* ==================================================================
-   Mediaflow — Modern Light met diep groen
+   Mediaflow â€” Modern Light met diep groen
    ------------------------------------------------------------------
    Dit is HET centrale stylesheet voor de hele website (alle talen).
    Elke pagina in /, /en/, /de/ en /fr/ gebruikt dit ene bestand.
@@ -30,28 +30,28 @@
    ------------------------------------------------------------------ */
 
 :root {
-    /* Donker groen — koppen (h2/h3) en donkere achtergronden */
+    /* Donker groen â€” koppen (h2/h3) en donkere achtergronden */
     --green-900: #123d26;
 
-    /* Middel groen — hoofdkleur voor knoppen, actieve links, iconen */
+    /* Middel groen â€” hoofdkleur voor knoppen, actieve links, iconen */
     --green-700: #1a5c3a;
 
-    /* Licht groen — subtiele hover-achtergrond */
+    /* Licht groen â€” subtiele hover-achtergrond */
     --green-100: #e6f2ea;
 
-    /* Wit — standaard achtergrond */
+    /* Wit â€” standaard achtergrond */
     --bg: #ffffff;
 
-    /* Licht grijsgroen — zachte achtergrond voor afwisselende secties */
+    /* Licht grijsgroen â€” zachte achtergrond voor afwisselende secties */
     --bg-soft: #f5f8f6;
 
-    /* Donkergrijs — standaard tekstkleur */
+    /* Donkergrijs â€” standaard tekstkleur */
     --text: #1f2937;
 
-    /* Grijsgroen — tekst die iets op de achtergrond mag staan */
+    /* Grijsgroen â€” tekst die iets op de achtergrond mag staan */
     --text-muted: #5b6b63;
 
-    /* Lichtgrijs — dunne scheidingslijnen en randen */
+    /* Lichtgrijs â€” dunne scheidingslijnen en randen */
     --border: #e3eae5;
 
     /* Afgeronde hoeken bij kaarten, knoppen en blokken */
@@ -338,7 +338,7 @@ a {
     margin: 0 auto;
 }
 
-/* Grote titel — schaalt automatisch mee met het scherm */
+/* Grote titel â€” schaalt automatisch mee met het scherm */
 .hero h1 {
     font-size: clamp(2.2rem, 5vw, 3.4rem);
     line-height: 1.15;
@@ -361,7 +361,7 @@ a {
     flex-wrap: wrap;
 }
 
-/* Kleinere variant — gebruikt op subpagina's */
+/* Kleinere variant â€” gebruikt op subpagina's */
 .hero.small {
     padding: 56px 24px 48px;
 }
@@ -468,7 +468,7 @@ a {
 
 /* ------------------------------------------------------------------
    7. KAARTEN (CARD-GRID)
-   Witte blokken met icoon, titel en uitleg — gebruikt op bijna
+   Witte blokken met icoon, titel en uitleg â€” gebruikt op bijna
    elke pagina (diensten, over mij, contact, etc.).
    ------------------------------------------------------------------ */
 
@@ -858,7 +858,7 @@ a {
     padding: 0;
 }
 
-/* Sectie direct náár de before/after-slider ook wat compacter */
+/* Sectie direct nÃ¡Ã¡r de before/after-slider ook wat compacter */
 .section.ba-section + .section {
     padding-top: 48px;
 }
@@ -943,7 +943,7 @@ a {
     transform: translate(-50%, -50%);
 }
 
-/* Als de vraag open is: plusje draait 45° en wordt kruisje */
+/* Als de vraag open is: plusje draait 45Â° en wordt kruisje */
 .faq-item.open .faq-icon {
     background: var(--green-700);
     transform: rotate(45deg);
@@ -1141,7 +1141,7 @@ a {
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.08);
     padding: 0;
-    transition: background 0.2s ease;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
 }
 
 /* SVG-icoon binnen de knop, perfect gecentreerd */
@@ -1243,10 +1243,10 @@ a {
    "EINDE MOTION") en het motion-blok in script.js.
    ------------------------------------------------------------------ */
 
-/* ===== MOTION — om terug te draaien: dit blok verwijderen ===== */
+/* ===== MOTION â€” om terug te draaien: dit blok verwijderen ===== */
 /* Alleen toepassen als de gebruiker GEEN "reduced motion" heeft ingesteld */
 @media (prefers-reduced-motion: no-preference) {
-    /* Hero-elementen verschijnen bij het laden één voor één van onderaf */
+    /* Hero-elementen verschijnen bij het laden Ã©Ã©n voor Ã©Ã©n van onderaf */
     .hero-inner > * {
         animation: motion-fade-up 0.7s ease both;
     }
@@ -1630,15 +1630,6 @@ a {
     filter: brightness(1.08);
 }
 
-/* Afspeelknop schaalt mee met de zoom van de thumbnail */
-.video-thumb-play {
-    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.video-thumb:hover .video-thumb-play {
-    transform: scale(1.08);
-}
-
 /* Afspeelknop krijgt zachte lichtgloed zodat hij beter uitspringt */
 .video-thumb-play::before {
     transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.7s ease;
@@ -1657,7 +1648,7 @@ a {
     color: transparent;
     font-size: 0;
     background: transparent;
-    transition: background 0.2s ease;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
 }
 
 .video-thumb-play::before {
