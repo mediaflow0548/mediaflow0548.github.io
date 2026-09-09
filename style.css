@@ -1606,9 +1606,15 @@ a {
     fill: var(--green-700);
     transform: scale(1.08);
 }
+/* Offerte-formulier centraal op de contactpagina */
+.quote-form-layout {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
 /* Contactformulier (Web3Forms): velden in huisstijl */
 .contact-form {
-    max-width: 640px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 18px;
