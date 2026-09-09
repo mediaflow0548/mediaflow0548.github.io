@@ -332,10 +332,27 @@ a {
     padding: 120px 24px 100px;
 }
 
-/* Binnenkant van de hero, gecentreerd met maximale breedte */
+/* Binnenkant van de hero: tekst links, foto rechts op desktop */
 .hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 480px);
+    align-items: center;
+    gap: 48px;
     max-width: var(--max-width);
     margin: 0 auto;
+}
+
+.hero-content {
+    min-width: 0;
+}
+
+.hero-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 /* Grote titel â€” schaalt automatisch mee met het scherm */
@@ -1204,6 +1221,16 @@ a {
 }
 
 @media (max-width: 600px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-image {
+        order: -1;
+        aspect-ratio: 16 / 10;
+        border-radius: 18px;
+    }
+
     .section {
         padding: 40px 20px;
     }
