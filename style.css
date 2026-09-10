@@ -190,6 +190,12 @@ a {
     margin-left: 10px;
 }
 
+/* In het mobiele menu mag de taalkeuze over de volle breedte staan */
+.lang-switch-mobile {
+    margin: 14px 0 0;
+    flex-wrap: wrap;
+}
+
 /* Elke taalknop (actieve taal is button, andere zijn links) */
 .lang-switch button {
     display: inline-flex;
@@ -1266,6 +1272,12 @@ a {
 
     .footer-legal {
         margin-top: 0;
+    }
+
+    /* Zonder deze regel blijft de footer op mobiel vier kolommen
+       breed en steekt hij buiten de rest van de pagina uit. */
+    .footer-inner {
+        grid-template-columns: 1fr;
     }
 }
 

@@ -290,6 +290,14 @@ function buildHeader() {
         return `<a href="${item.href}" class="${classes}">${t[item.key]}</a>`;
     }).join('');
 
+    // De taalwisselaar stond alleen in het desktopmenu. Door hem ook
+    // in het mobiele menu te plaatsen kan hij op elk scherm worden gebruikt.
+    const mobileLanguageSwitcher = `
+        <div class="lang-switch lang-switch-mobile" aria-label="Taalkeuze">
+            ${buildLanguageSwitcher()}
+        </div>
+    `;
+
     return `
         <div class="header-inner">
             <a href="index.html" class="brand">
@@ -308,6 +316,7 @@ function buildHeader() {
         </div>
         <nav class="nav-mobile">
             ${mobileLinks}
+            ${mobileLanguageSwitcher}
         </nav>
     `;
 }
@@ -639,7 +648,9 @@ function initVideoLightbox() {
     lightbox.innerHTML =
         '<div class="video-lightbox-inner">' +
         '<button type="button" class="video-lightbox-close" aria-label="Sluiten">&times;</button>' +
-        '<div class="video-frame"><iframe title="Video" allowfullscreen></iframe></div>' +
+        // Referrer is nodig voor YouTube-embeds; de allow-lijst volgt
+        // de door YouTube aanbevolen player-features.
+        '<div class="video-frame"><iframe title="Video" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>' +
         '</div>';
     document.body.appendChild(lightbox);
 
@@ -656,7 +667,7 @@ function initVideoLightbox() {
         thumb.addEventListener('click', () => {
             const videoId = thumb.dataset.videoId;
             const startParam = thumb.dataset.start ? '&start=' + thumb.dataset.start : '';
-            iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&vq=hd1080' + startParam;
+            iframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&vq=hd1080' + startParam;
             lightbox.classList.add('open');
             document.body.style.overflow = 'hidden';
         });
@@ -665,6 +676,22 @@ function initVideoLightbox() {
     closeButton.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', (event) => {
         if (event.target === lightbox) closeLightbox();
+    });
+
+    // Escape sluit de popup en geeft de focus terug aan de thumbnail
+    // waarvan de video was gestart.
+    let activeThumb = null;
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && lightbox.classList.contains('open')) {
+            closeLightbox();
+            if (activeThumb) activeThumb.focus();
+        }
+    });
+
+    thumbs.forEach((thumb) => {
+        thumb.addEventListener('focus', () => {
+            activeThumb = thumb;
+        });
     });
 }
 
