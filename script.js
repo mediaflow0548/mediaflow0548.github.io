@@ -277,17 +277,20 @@ function buildHeader() {
 
     const active = currentPage();
     const links = NAV_ITEMS.map((item) => {
-        const classes = [item.cta ? 'nav-cta' : '', active === item.href ? 'active' : '']
+        const isActive = active === item.href;
+        const classes = [item.cta ? 'nav-cta' : '', isActive ? 'active' : '']
             .filter(Boolean)
             .join(' ');
-        return `<a href="${item.href}" class="${classes}">${t[item.key]}</a>`;
+        // aria-current geeft de huidige pagina ook semantisch aan.
+        return `<a href="${item.href}" class="${classes}"${isActive ? ' aria-current="page"' : ''}>${t[item.key]}</a>`;
     }).join('');
 
     const mobileLinks = NAV_ITEMS.map((item) => {
-        const classes = [item.cta ? 'nav-cta' : '', active === item.href ? 'active' : '']
+        const isActive = active === item.href;
+        const classes = [item.cta ? 'nav-cta' : '', isActive ? 'active' : '']
             .filter(Boolean)
             .join(' ');
-        return `<a href="${item.href}" class="${classes}">${t[item.key]}</a>`;
+        return `<a href="${item.href}" class="${classes}"${isActive ? ' aria-current="page"' : ''}>${t[item.key]}</a>`;
     }).join('');
 
     // De taalwisselaar stond alleen in het desktopmenu. Door hem ook
