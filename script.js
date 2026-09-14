@@ -262,9 +262,10 @@ function buildLanguageSwitcher() {
     }).join('');
 }
 
-// `rootPrefix` is leeg op de NL-pagina's (root) en "../" op de
-// vertaalde pagina's (en/, de/, fr/) — zodat logo-paden kloppen.
-const ROOT_PREFIX = currentLanguage() === 'nl' ? '' : '../';
+// `rootPrefix` is altijd "../": vanaf de root lost dit de vertaalde
+// taalmap (bijv. nl/) op en vanuit en/, de/ of fr/ gaat het naar de
+// hoofdfolder terug. Hierdoor blijven juridische links taalafhankelijk.
+const ROOT_PREFIX = '../';
 
 // ------------------------------------------------------------------
 // 6. buildHeader()
