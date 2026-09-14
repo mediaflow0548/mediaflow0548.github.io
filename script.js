@@ -60,6 +60,7 @@ const I18N = {
         location: 'Holten, Overijssel',
         legalTitle: 'Juridisch',
         certificate: 'Dronecertificaat A1/A3',
+        viewCertificate: 'Bekijk certificaat',
         privacy: 'Privacyverklaring',
         disclaimer: 'Disclaimer',
         copyright: '© 2026 Mediaflow — Jaap Spakman',
@@ -79,6 +80,7 @@ const I18N = {
         location: 'Holten, Overijssel',
         legalTitle: 'Legal',
         certificate: 'Drone certificate A1/A3',
+        viewCertificate: 'View certificate',
         privacy: 'Privacy Policy',
         disclaimer: 'Disclaimer',
         copyright: '© 2026 Mediaflow — Jaap Spakman',
@@ -98,6 +100,7 @@ const I18N = {
         location: 'Holten, Overijssel',
         legalTitle: 'Rechtliches',
         certificate: 'Drohnenzertifikat A1/A3',
+        viewCertificate: 'Zertifikat ansehen',
         privacy: 'Datenschutzerklärung',
         disclaimer: 'Haftungsausschluss',
         copyright: '© 2026 Mediaflow — Jaap Spakman',
@@ -117,6 +120,7 @@ const I18N = {
         location: 'Holten, Overijssel',
         legalTitle: 'Mentions légales',
         certificate: 'Certificat de drone A1/A3',
+        viewCertificate: 'Voir le certificat',
         privacy: 'Politique de confidentialité',
         disclaimer: 'Avertissement',
         copyright: '© 2026 Mediaflow — Jaap Spakman',
@@ -258,9 +262,10 @@ function buildLanguageSwitcher() {
     }).join('');
 }
 
-// `rootPrefix` is leeg op de NL-pagina's (root) en "../" op de
-// vertaalde pagina's (en/, de/, fr/) — zodat logo-paden kloppen.
-const ROOT_PREFIX = currentLanguage() === 'nl' ? '' : '../';
+// `rootPrefix` is altijd "../": vanaf de root lost dit de vertaalde
+// taalmap (bijv. nl/) op en vanuit en/, de/ of fr/ gaat het naar de
+// hoofdfolder terug. Hierdoor blijven juridische links taalafhankelijk.
+const ROOT_PREFIX = '../';
 
 // ------------------------------------------------------------------
 // 6. buildHeader()
@@ -365,15 +370,15 @@ function buildFooter() {
             </div>
             <div class="footer-legal">
                 <h4>${t.legalTitle}</h4>
-                <a href="${rootPrefix}privacyverklaring.html">${t.privacy}</a>
-                <a href="${rootPrefix}disclaimer.html">${t.disclaimer}</a>
+                <a href="${currentLanguage() === 'nl' ? '' : `../${currentLanguage()}/`}privacyverklaring.html">${t.privacy}</a>
+                <a href="${currentLanguage() === 'nl' ? '' : `../${currentLanguage()}/`}disclaimer.html">${t.disclaimer}</a>
             </div>
         </div>
         <div class="footer-certificate">
             <h4>${t.certificate}</h4>
             <button type="button" class="certificate-button" aria-label="${t.certificate}">
                 <img src="${rootPrefix}assets/drone-certificaat.jpg" alt="Dronecertificaat A1/A3">
-                <span>Bekijk certificaat</span>
+                <span>${t.viewCertificate}</span>
             </button>
         </div>
         <div class="footer-bottom">${t.copyright}</div>
