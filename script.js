@@ -370,8 +370,8 @@ function buildFooter() {
             </div>
             <div class="footer-legal">
                 <h4>${t.legalTitle}</h4>
-                <a href="${rootPrefix}${currentLanguage()}/privacyverklaring.html">${t.privacy}</a>
-                <a href="${rootPrefix}${currentLanguage()}/disclaimer.html">${t.disclaimer}</a>
+                <a href="${currentLanguage() === 'nl' ? '' : `../${currentLanguage()}/`}privacyverklaring.html">${t.privacy}</a>
+                <a href="${currentLanguage() === 'nl' ? '' : `../${currentLanguage()}/`}disclaimer.html">${t.disclaimer}</a>
             </div>
         </div>
         <div class="footer-certificate">
