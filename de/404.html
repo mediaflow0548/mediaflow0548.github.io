@@ -29,6 +29,33 @@
         <a href="index.html" class="btn btn-primary">Zurück zur Startseite</a>
     </main>
     <footer class="site-footer"></footer>
+    <!-- Automatische taaldetectie voor de 404-pagina -->
+    <script>
+    (function () {
+        // Wacht tot de browser de taalinstelling en de huidige URL kent.
+        function detectLanguage() {
+            // 1. Check of de bezochte URL al in een taalmap zat (bijv. /en/abc).
+            var path = window.location.pathname;
+            if (path.indexOf('/en/') !== -1) return 'en';
+            if (path.indexOf('/de/') !== -1) return 'de';
+            if (path.indexOf('/fr/') !== -1) return 'fr';
+
+            // 2. Geen taalmap gevonden? Kijk dan naar de browserinstelling.
+            var lang = (navigator.language || 'nl').toLowerCase();
+            if (lang.indexOf('en') === 0) return 'en';
+            if (lang.indexOf('de') === 0) return 'de';
+            if (lang.indexOf('fr') === 0) return 'fr';
+            return 'nl';
+        }
+
+        // Stuur door naar de juiste taalversie, behalve als we al in de root zitten (NL).
+        var lang = detectLanguage();
+        if (lang !== 'nl') {
+            window.location.replace('/' + lang + '/404.html');
+        }
+    })();
+    </script>
+
     <script src="../script.js" defer></script>
 </body>
 </html>
