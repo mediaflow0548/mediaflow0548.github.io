@@ -60,6 +60,7 @@ const I18N = {
         location: 'Holten, Overijssel',
         legalTitle: 'Juridisch',
         certificate: 'Dronecertificaat A1/A3',
+        viewCertificate: 'Bekijk certificaat',
         privacy: 'Privacyverklaring',
         disclaimer: 'Disclaimer',
         copyright: '© 2026 Mediaflow — Jaap Spakman',
@@ -79,6 +80,7 @@ const I18N = {
         location: 'Holten, Overijssel',
         legalTitle: 'Legal',
         certificate: 'Drone certificate A1/A3',
+        viewCertificate: 'View certificate',
         privacy: 'Privacy Policy',
         disclaimer: 'Disclaimer',
         copyright: '© 2026 Mediaflow — Jaap Spakman',
@@ -98,6 +100,7 @@ const I18N = {
         location: 'Holten, Overijssel',
         legalTitle: 'Rechtliches',
         certificate: 'Drohnenzertifikat A1/A3',
+        viewCertificate: 'Zertifikat ansehen',
         privacy: 'Datenschutzerklärung',
         disclaimer: 'Haftungsausschluss',
         copyright: '© 2026 Mediaflow — Jaap Spakman',
@@ -117,6 +120,7 @@ const I18N = {
         location: 'Holten, Overijssel',
         legalTitle: 'Mentions légales',
         certificate: 'Certificat de drone A1/A3',
+        viewCertificate: 'Voir le certificat',
         privacy: 'Politique de confidentialité',
         disclaimer: 'Avertissement',
         copyright: '© 2026 Mediaflow — Jaap Spakman',
@@ -373,7 +377,7 @@ function buildFooter() {
             <h4>${t.certificate}</h4>
             <button type="button" class="certificate-button" aria-label="${t.certificate}">
                 <img src="${rootPrefix}assets/drone-certificaat.jpg" alt="Dronecertificaat A1/A3">
-                <span>Bekijk certificaat</span>
+                <span>${t.viewCertificate}</span>
             </button>
         </div>
         <div class="footer-bottom">${t.copyright}</div>
