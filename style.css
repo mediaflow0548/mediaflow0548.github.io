@@ -1076,6 +1076,19 @@ a {
         aspect-ratio: 16 / 10;
         border-radius: 18px;
     }
+
+    /* Op mobiel staat het label boven de waarde: rustiger en het geeft
+       lange e-mailadressen de volle breedte. */
+    .contact-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        padding-bottom: 4px;
+    }
+
+    .contact-list .label {
+        min-width: 0;
+    }
 }
 
 /* Op tablets en mobiel krijgt de contactpagina één kolom, zodat de
@@ -1110,6 +1123,12 @@ a {
     align-items: center;
     gap: 12px;
     font-size: 1.05rem;
+}
+
+/* Lange waarden (zoals e-mailadressen) mogen afbreken in plaats van
+   buiten het scherm te vallen, vooral op mobiel. */
+.contact-list a {
+    overflow-wrap: anywhere;
 }
 
 /* Het label links ("E-mail", "Telefoon", "Locatie") */
