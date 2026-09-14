@@ -1078,6 +1078,23 @@ a {
     }
 }
 
+/* Op tablets en mobiel krijgt de contactpagina één kolom, zodat de
+   tekst en de sfeerfoto genoeg ademruimte houden. De foto staat dan
+   bovenaan en blijft horizontaal gecentreerd. */
+@media (max-width: 960px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .contact-image {
+        order: -1;
+        max-width: 560px;
+        margin: 0 auto;
+        aspect-ratio: 16 / 10;
+    }
+}
+
 /* ===== Contactpagina ===== */
 .contact-list {
     list-style: none;
@@ -1311,11 +1328,11 @@ a {
     }
 
     .section {
-        padding: 40px 20px;
+        padding: 40px 24px;
     }
 
     .hero {
-        padding: 80px 20px 70px;
+        padding: 80px 24px 70px;
     }
 
     .cta-block {
