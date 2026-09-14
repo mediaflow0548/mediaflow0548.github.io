@@ -152,6 +152,7 @@ a {
 .nav-desktop a {
     text-decoration: none;
     color: var(--text);
+    white-space: nowrap;
     padding: 8px 12px;
     border-radius: 8px;
     font-size: 0.95rem;
