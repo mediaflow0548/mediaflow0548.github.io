@@ -1081,6 +1081,7 @@ a {
     }
 
     .contact-image {
+        order: -1;
         display: block;
         justify-self: center;
         aspect-ratio: 16 / 10;
