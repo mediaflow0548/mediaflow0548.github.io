@@ -1071,10 +1071,41 @@ a {
         grid-template-columns: 1fr;
     }
 
+    /* Houd de sfeerfoto netjes binnen de zijmarges op telefoonschermen */
+    .contact-layout {
+        min-width: 0;
+    }
+
+    .contact-info {
+        min-width: 0;
+    }
+
     .contact-image {
         order: -1;
+        display: block;
+        justify-self: center;
         aspect-ratio: 16 / 10;
         border-radius: 18px;
+    }
+
+    /* Voorkom dat e-mailadressen de kolom en afbeelding laten oprekken */
+    .contact-list {
+        min-width: 0;
+    }
+
+    .contact-list li {
+        display: block;
+    }
+
+    .contact-list .label {
+        display: block;
+        margin-bottom: 2px;
+    }
+
+    .contact-list a {
+        display: inline-block;
+        max-width: 100%;
+        overflow-wrap: anywhere;
     }
 }
 
@@ -1320,6 +1351,15 @@ a {
 
     .cta-block {
         padding: 44px 24px;
+    }
+
+    /* Laat knoppen op mobiel de volledige breedte gebruiken zonder te overflowen */
+    .btn {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        text-align: center;
     }
 
     .video-grid {
