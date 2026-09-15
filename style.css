@@ -730,7 +730,7 @@ a {
 .photo-placeholder {
     height: 200px;
     border-radius: 12px;
-    bo    background: var(--bg-soft);
+    background: var(--bg-soft);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1071,40 +1071,41 @@ a {
         grid-template-columns: 1fr;
     }
 
+    /* Houd de sfeerfoto netjes binnen de zijmarges op telefoonschermen */
+    .contact-layout {
+        min-width: 0;
+    }
+
+    .contact-info {
+        min-width: 0;
+    }
+
     .contact-image {
         order: -1;
+        display: block;
+        justify-self: center;
         aspect-ratio: 16 / 10;
         border-radius: 18px;
     }
 
-    /* Op mobiel staat het label boven de waarde: rustiger en het geeft
-       lange e-mailadressen de volle breedte. */
+    /* Voorkom dat e-mailadressen de kolom en afbeelding laten oprekken */
+    .contact-list {
+        min-width: 0;
+    }
+
     .contact-list li {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 2px;
-        padding-bottom: 4px;
+        display: block;
     }
 
     .contact-list .label {
-        min-width: 0;
-    }
-}
-
-/* Op tablets en mobiel krijgt de contactpagina één kolom, zodat de
-   tekst en de sfeerfoto genoeg ademruimte houden. De foto staat dan
-   bovenaan en blijft horizontaal gecentreerd. */
-@media (max-width: 960px) {
-    .contact-layout {
-        grid-template-columns: 1fr;
-        gap: 24px;
+        display: block;
+        margin-bottom: 2px;
     }
 
-    .contact-image {
-        order: -1;
-        max-width: 560px;
-        margin: 0 auto;
-        aspect-ratio: 16 / 10;
+    .contact-list a {
+        display: inline-block;
+        max-width: 100%;
+        overflow-wrap: anywhere;
     }
 }
 
@@ -1123,12 +1124,6 @@ a {
     align-items: center;
     gap: 12px;
     font-size: 1.05rem;
-}
-
-/* Lange waarden (zoals e-mailadressen) mogen afbreken in plaats van
-   buiten het scherm te vallen, vooral op mobiel. */
-.contact-list a {
-    overflow-wrap: anywhere;
 }
 
 /* Het label links ("E-mail", "Telefoon", "Locatie") */
@@ -1347,15 +1342,24 @@ a {
     }
 
     .section {
-        padding: 40px 24px;
+        padding: 40px 20px;
     }
 
     .hero {
-        padding: 80px 24px 70px;
+        padding: 80px 20px 70px;
     }
 
     .cta-block {
         padding: 44px 24px;
+    }
+
+    /* Laat knoppen op mobiel de volledige breedte gebruiken zonder te overflowen */
+    .btn {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        text-align: center;
     }
 
     .video-grid {
@@ -1398,7 +1402,7 @@ a {
         animation: motion-fade-up 0.7s ease;
     }
 
-    .hero-inner > * {
+    .hero-inner > .hero-content {
         animation: motion-fade-up 0.7s ease both;
     }
 
