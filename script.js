@@ -492,7 +492,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 motionObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.02, rootMargin: '0px 0px 80px 0px' });
 
     motionTargets.forEach((target) => motionObserver.observe(target));
     // EINDE MOTION
