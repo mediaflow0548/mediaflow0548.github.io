@@ -655,7 +655,7 @@ function initVideoLightbox() {
     lightbox.className = 'video-lightbox';
     lightbox.innerHTML =
         '<div class="video-lightbox-inner">' +
-        '<button type="button" class="video-lightbox-close" aria-label="Sluiten">&times;</button>' +
+        '<button type="button" class="video-lightbox-close" aria-label="Sluit video">&times;</button>' +
         // Referrer is nodig voor YouTube-embeds; de allow-lijst volgt
         // de door YouTube aanbevolen player-features.
         '<div class="video-frame"><iframe title="Video" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>' +

@@ -730,7 +730,7 @@ a {
 .photo-placeholder {
     height: 200px;
     border-radius: 12px;
-    bo    background: var(--bg-soft);
+    background: var(--bg-soft);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1402,7 +1402,7 @@ a {
         animation: motion-fade-up 0.7s ease;
     }
 
-    .hero-inner > * {
+    .hero-inner > .hero-content {
         animation: motion-fade-up 0.7s ease both;
     }
 
